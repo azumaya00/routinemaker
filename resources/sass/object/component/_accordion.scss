@@ -1,0 +1,56 @@
+/* ---------------------------------
+c-accordion
+--------------------------------- */
+.c-accordion {
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  box-sizing: border-box;
+  @include mq() {
+    width: 100%;
+    min-width: 100px;
+    box-sizing: border-box;
+  }
+  &__tab {
+    display: none;
+    &:checked + label + .c-accordion__content {
+      height: auto;
+      padding: 0 $space_3l;
+      background: $color_base;
+      opacity: 1;
+      transition: all 0.5s;
+      font-size: $font-size_m;
+    }
+    &:checked + label::before {
+      content: "\f0d7";
+    }
+  }
+  &__label {
+    width: 100%;
+    padding: $space_m $space_xl;
+    box-sizing: border-box;
+    display: block;
+    background: $color_base;
+    font-size: $font-size_m;
+    color: $color_main;
+    cursor: pointer;
+    @include mq() {
+      font-size: $font-size_m;
+    }
+    &::before {
+      content: "\f0da";
+      font-family: "Font Awesome 5 Free";
+      font-weight: bold;
+      padding-right: 8px;
+    }
+  }
+  &__content {
+    width: 100%;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+    opacity: 0;
+    transition: all 0.5s;
+  }
+}

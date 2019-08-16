@@ -1,0 +1,26 @@
+/* ---------------------------------
+p-form
+--------------------------------- */
+.p-form {
+    &__container{
+        width: 40%;
+        margin: $space_6l auto;
+        padding: $space_3l;
+        box-sizing: border-box;
+        background: $color_main;
+        @include mq(){
+            width: 100%;
+            margin: $space_2l auto;
+            padding: $space_m;
+        }
+    }
+    &__title{
+        text-align: center;
+        margin-bottom: $space_2l;
+    }
+    &__text{
+        margin: $space_l 0;
+        font-size: $font-size_s;
+        line-height: 1.8;
+    }
+}

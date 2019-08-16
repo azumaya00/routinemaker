@@ -1,0 +1,29 @@
+/* ---------------------------------
+p-list
+--------------------------------- */
+.p-list {
+    &__container{
+        width: 50%;
+        margin: $space_6l auto;
+        padding: $space_3l;
+        box-sizing: border-box;
+        background: $color_main;
+        @include mq(){
+            width: 100%;
+            margin: $space_2l auto;
+            padding: $space_m;
+        }
+    }
+    &__title{
+        margin-bottom: $space_l;
+    }
+    &__text{
+        margin: $space_l 0;
+        font-size: $font-size_s;
+        color: $color_dark075;
+        line-height: 1.8;
+    }
+    &__btn__group{
+        margin-top: $space_2l;
+    }
+}

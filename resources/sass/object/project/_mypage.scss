@@ -1,0 +1,117 @@
+/* ---------------------------------
+p-mypage
+--------------------------------- */
+.p-mypage{
+    &__container{
+        width: 50%;
+        margin: $space_6l auto;
+        padding: $space_3l;
+        box-sizing: border-box;
+        background: $color_main;
+        @include mq(){
+            width: 100%;
+            margin: 0 auto;
+            padding: 0;
+        }
+    }
+    &__title{
+        margin-bottom: $space_l;
+        @include mq(){
+            display: none;
+        }
+    }
+    &__text{
+        margin: $space_l 0;
+        font-size: $font-size_s;
+        color: $color_dark075;
+        line-height: 1.8;
+        @include mq(){
+            display: none;
+        }
+    }
+    &__btn__group{
+        margin: $space_2l;
+        text-align: center;
+        @include mq(){
+            display: none;
+        }
+    }
+    &__list{
+        &__item{
+            width: 100%;
+            padding: $space_m;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            background: $color_base;
+            border: 1px solid $color_dark025;
+            font-size: $font-size_m;
+            @include mq(){
+                padding: $space_l $space_m;
+            }
+            &--left{
+                width: 80%;
+                color: $font-color_default;
+
+            }
+            &--right{
+                width: 20%;
+                color: $color_main;
+                text-align: right;
+                cursor: pointer;
+                a{
+                    color: $color_main; 
+                }
+            }
+        }
+    }
+    &__icon{
+        margin: 0 $space_s;
+    }
+    &__sp{
+        &__menu{
+            display: none;
+            @include mq(){
+                width: 100%;
+                height: 80px;
+                box-sizing: border-box;
+                display: flex;
+                justify-content: space-between;
+            }
+            &--left{
+                @include mq(){
+                    width: 50%;
+                    height: 80px;
+                    box-sizing: border-box;
+                    position: relative;
+                    border: 1px solid $color_dark025;
+                    background: $color_base;
+                    text-align: center;
+                }
+            }
+            &--right{
+                @include mq(){
+                    width: 50%;
+                    height: 80px;
+                    box-sizing: border-box;
+                    position: relative;
+                    border: 1px solid $color_dark025;
+                    background: $color_main;
+                    text-align: center;
+                }
+            }
+        }
+        &__link{
+            @include mq(){
+                font-size: $font-size_xl;
+                color: $color_dark075;
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                line-height: 80px;
+            }
+        }
+    }
+}

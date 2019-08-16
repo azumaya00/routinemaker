@@ -1,0 +1,42 @@
+/* ---------------------------------
+p-complete
+--------------------------------- */
+.p-complete{
+    &__container{
+        width: 50%;
+        margin: $space_6l auto;
+        padding: $space_3l;
+        box-sizing: border-box;
+        @include mq(){
+            width: 100%;
+            padding: $space_m;
+        }
+    }
+    &__title{
+        margin-bottom: $space_4l;
+        text-align: center;
+        color: $color_dark075;
+    }
+    &__img__container{
+        width: 300px;
+        height: 300px;
+        margin: 0 auto $space_4l;
+        border-radius: 180px;
+        background: $color_base;
+        overflow: hidden;
+    }
+    &__img{
+        width: 100%;
+        height: auto;
+    }
+    &__text{
+        text-align: center;
+        font-size: $font-size_m;
+        color: $color_dark075;
+        line-height: 1.6;
+    }
+    &__btn__group{
+        margin: $space_3l;
+        text-align: center;
+    }
+}

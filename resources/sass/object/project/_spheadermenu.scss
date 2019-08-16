@@ -1,0 +1,78 @@
+/* ---------------------------------
+p-header__sp
+--------------------------------- */
+.p-header__sp {
+  display: none;
+  @include mq() {
+    display: block;
+    width: 70vw;
+    height: 100vh;
+    background: rgba(139, 152, 162, 0.85);
+    position: absolute;
+    top: 0px;
+    opacity: 1;
+    z-index: 2;
+    transition: all 0.5s ease-in-out;
+    &--left{
+        left: 0;
+        transform: translateX(-70vw);
+    }
+    &--right{
+        right: 0;
+        transform: translateX(70vw);
+    }
+    &.active {
+      opacity: 1;
+      transform: translateX(0);
+      transition: all 0.5s ease-in-out;
+    }
+    &__icon {
+      font-size: $font-size_2l;
+      text-align: center;
+      &__container {
+        width: 50px;
+        position: absolute;
+        top: 7px;
+        text-align: center;
+        color: $color_base;
+        &--left {
+          left: 6px;
+        }
+        &--right {
+          right: 6px;
+        }
+        &--text {
+          line-height: 1;
+          font-size: $font-size_s;
+        }
+      }
+    }
+    &__menu {
+      margin-top: $space_8l;
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      &--left{
+          text-align: left;
+      }
+      &--right{
+          text-align: right;
+      }
+      &__list {
+        margin: $space_m;
+        &--user{
+            margin-bottom: $space_2l;
+            font-size: $font-size_xs;
+            color: $color_base;
+            span{
+                font-size: $font-size_m;
+            }
+        }
+        a {
+          font-size: $font-size_l;
+          color: $color_base;
+        }
+      }
+    }
+  }
+}

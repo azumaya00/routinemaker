@@ -1,0 +1,34 @@
+/* ---------------------------------
+footer
+--------------------------------- */
+.l-footer {
+  width: 100%;
+  height: 20px;
+  display: flex;
+  justify-content: space-between;
+  background: $color_dark075;
+  @include mq(){
+    justify-content: center;
+  }
+  .copyright {
+    margin-left: $space_l;
+    font-size: $font-size_xs;
+    color: $color_base;
+  }
+  .info{
+      margin-right: $space_l;
+      font-size: $font-size_xs;
+      color: $color_base;
+      @include mq(){
+        display: none;
+      }
+      .footer-menu{
+          height: 20px;
+          display: flex;
+          justify-content: space-between;
+          &__list{
+              margin-left: $space_s;
+          }
+      }
+  }
+}

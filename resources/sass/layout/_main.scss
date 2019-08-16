@@ -1,0 +1,39 @@
+/* ---------------------------------
+main
+--------------------------------- */
+.l-main{
+    width: 100%;
+    flex-grow: 1;
+    //背景色設定
+    &--main{
+        background: $color_main;
+    }
+    &--accent{
+        background: $color_accent;
+    }
+    &--base{
+        background: $color_base;
+        @include mq(){
+            background: $color_main;
+        }
+    }
+    &--base--sub{
+        background: $color_base--sub;
+        @include mq(){
+            background: $color_main;
+        }
+    }
+    &__inner{
+        max-width: $site-width;
+        margin: 0 auto;
+    }
+}
+
+.l-hero{
+    width: 100%;
+    background: $color_main;
+}
+
+.l-user{
+    width: 100%;
+}

@@ -36,4 +36,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    //routinesテーブル、historiesと紐付ける
+    //今回は1対多なのでhasMany
+    //主テーブルから複数の従テーブルへ紐付け
+    //usersテーブルは主になる(参照元なので)
+    public function routines()
+    {
+        //routine.phpと紐付ける
+        return $this->hasMany('App\Routine');
+    }
+    public function histories()
+    {
+        //history.phpと紐付ける
+        return $this->hasMany('App\History');
+    }
 }

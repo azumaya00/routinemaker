@@ -1,0 +1,59 @@
+/* ---------------------------------
+variables
+--------------------------------- */
+
+$site-width: 1024px;
+
+$color_dark100: #272B2D;
+$color_dark075: #8B98A2;
+$color_dark050: #C9D0D6;
+$color_dark025: #E7EAEC;
+
+$color_light100: rgba(255,255,255,1.00);
+$color_light070: rgba(255,255,255,0.70);
+$color_light030: rgba(255,255,255,0.30);
+$color_light012: rgba(255,255,255,0.12);
+
+$color_main: #B8DDF7;
+$color_accent: #FFCCBA;
+$color_base: $color_light100;
+$color_base--sub: #F8FCFF;
+$color_err: #FF0A0A;
+
+$font-color_default: $color_dark100;
+$font-color_inverted: $color_light100;
+$font-color_link: $color_base--sub;
+
+$font-size_xs: 1.2rem;
+$font-size_s: 1.4rem;
+$font-size_m: 1.6rem;
+$font-size_l: 1.8rem;
+$font-size_xl: 2rem;
+$font-size_2l: 2.4rem;
+$font-size_3l: 2.8rem;
+$font-size_4l: 3.2rem;
+$font-size_5l: 3.6rem;
+$font-size_6l: 4rem;
+
+$space_s: 5px;
+$space_m: 10px;
+$space_l: 15px;
+$space_xl: 20px;
+$space_2l: 25px;
+$space_3l: 30px;
+$space_4l: 40px;
+$space_5l: 50px;
+$space_6l: 60px;
+$space_7l: 70px;
+$space_8l: 80px;
+
+$font-family_default: 'Noto Sans JP', sans-serif;
+$font-family_accent: 'Gloria Hallelujah', cursive;
+
+$breakpoints: (
+  'xs': 'screen and (max-width: 320px)',
+  'sm': 'screen and (max-width: 450px)',
+  'md': 'screen and (max-width: 768px)',
+  'lg': 'screen and (max-width: 1138px)',
+  'xl': 'screen and (max-width: 1180px)',
+) !default;

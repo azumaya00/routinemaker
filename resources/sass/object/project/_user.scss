@@ -1,0 +1,27 @@
+/* ---------------------------------
+p-user
+--------------------------------- */
+.p-user{
+    &__container{
+        padding: $space_3l 0;
+        text-align: center;
+        @include mq(){
+            width: 100%;
+            margin: $space_2l auto;
+            padding: $space_m;
+            box-sizing: border-box;
+        }
+    }
+    &__text{
+        margin-bottom: $space_m;
+        font-size: $font-size_s;
+        color: $color_dark075;
+    }
+    &__btn{
+        @include mq(){
+            width: 100%;
+            margin: 0;
+            box-sizing: border-box;
+        }
+    }
+}

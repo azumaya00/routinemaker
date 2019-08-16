@@ -1,0 +1,125 @@
+/* ---------------------------------
+c-button
+--------------------------------- */
+.c-btn {
+  margin-bottom: $space_l;
+  box-sizing: border-box;
+  display: inline-block;
+  box-shadow: 0 3px 3px $color_dark075;
+  text-align: center;
+  font-size: $font-size_l;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+  &:hover {
+    box-shadow: 0 5px 5px 0 $color_dark075;
+    transition: all 0.3s ease-out;
+  }
+
+  //2個並びのボタン
+  &__group {
+    display: flex;
+    justify-content: space-between;
+    @include mq() {
+      flex-direction: column-reverse;
+    }
+  }
+
+  &__square {
+    &--large {
+      width: 100%;
+      padding: $space_m $space_3l;
+    }
+    &--middle {
+      width: 100%;
+      padding: $space_s $space_3l;
+    }
+    &--small {
+      width: 47%;
+      padding: $space_m $space_3l;
+      @include mq() {
+        width: 100%;
+      }
+      &--back {
+        @include mq() {
+          width: 100%;
+          margin-top: 0;
+          padding: $space_s $space_3l;
+          font-size: $font-size_s;
+        }
+      }
+    }
+    &--flexible {
+      margin: 0 $space_m;
+      padding: $space_s $space_3l;
+    }
+  }
+
+  &__round {
+    width: 150px;
+    height: 150px;
+    display: inline-block;
+    border-radius: 90px;
+    background: $color_base;
+    color: $color_main;
+    line-height: 150px;
+    font-size: $font-size_2l;
+    font-weight: bold;
+    a {
+      color: $color_main;
+    }
+  }
+
+  &--main {
+    background: $color_main;
+    border: 1px solid $color_main;
+    color: $color_base;
+  }
+
+  &--accent {
+    background: $color_accent;
+    border: 1px solid $color_accent;
+    color: $color_base;
+  }
+
+  &--base {
+    background: $color_dark025;
+    border: 1px solid $color_dark025;
+    color: $color_dark075;
+  }
+
+  &--twitter {
+    background: $color_base;
+    border: 3px solid #00acee;
+    color: #00acee;
+  }
+
+  &--random {
+    background: $color_base;
+    border: 1px solid $color_dark025;
+    color: $color_main;
+  }
+//スマホ用+ボタン
+  &__sp{
+    display: none;
+    @include mq(){
+      display: block;
+      width: 60px;
+      height: 60px;
+      border-radius: 40px;
+      position: fixed;
+      right: 7%;
+      bottom: 30px;
+      background: $color_accent;
+    }
+    &__icon{
+      @include mq(){
+        display: block;
+        width: 60px;
+        height: 60px;
+        line-height: 60px;
+        font-size: $font-size_4l;
+      }
+    }
+
+  }
+}

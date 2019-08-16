@@ -1,0 +1,59 @@
+/* ---------------------------------
+base
+--------------------------------- */
+
+body,
+html {
+  width: 100%;
+  color: $font-color_default;
+  font-size: 62.5%; //10px
+  font-family: $font-family_default;
+  line-height: 1.6;
+  text-size-adjust: 100%;
+  box-sizing: border-box;
+  //カウンターリセット
+  counter-reset:my-counter;
+}
+
+//フッター下部固定用
+.wrapper--main{
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+p,
+a {
+  font-family: $font-family_default;
+}
+
+a {
+  color: $font-color_link;
+  text-decoration: none;
+}
+
+img {
+  vertical-align: bottom;
+}
+
+h1 {
+  font-family: $font-family_accent;
+  font-size: $font-size_4l;
+  color: $color_base--sub;
+  a {
+    font-family: $font-family_accent;
+    font-size: $font-size_4l;
+    color: $color_base--sub;
+  }
+}
+
+h2 {
+  font-size: $font-size_2l;
+  color: $color_base;
+}
+
+h3 {
+  font-size: $font-size_3l;
+  color: $color_base;
+  font-weight: bold;
+}

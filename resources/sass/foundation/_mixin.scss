@@ -1,0 +1,14 @@
+/* ---------------------------------
+mixin
+--------------------------------- */
+
+@mixin mq($breakpoint: md) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
+@mixin fontsizeVw($size) {
+  $winW: 768; // 画面幅を設定する
+  font-size: ($size / $winW) * 100 + vw;
+}

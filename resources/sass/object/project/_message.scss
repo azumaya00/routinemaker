@@ -1,0 +1,25 @@
+/* ---------------------------------
+p-message
+--------------------------------- */
+.p-message{
+    &__container{
+        width: 120px;
+        height: 120px;
+        padding: $space_m;
+        box-sizing: border-box;
+        position: fixed;
+        top: calc(50% - 60px);
+        background: $color_base;
+        box-shadow: 0 3px 6px $color_dark075;
+        text-align: center;
+        color: $color_main;
+        z-index: 1;
+    }
+    &__icon{
+        margin: $space_l 0 $space_s;
+        font-size: 52px;
+    }
+    &__text{
+        font-size: $font-size_s;
+    }
+}

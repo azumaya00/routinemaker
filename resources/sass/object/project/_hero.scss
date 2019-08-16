@@ -1,0 +1,60 @@
+/* ---------------------------------
+p-hero
+--------------------------------- */
+.p-hero{
+    &__container{
+        width: 70%;
+        min-width: 768px;
+        margin: 0 auto;
+        padding: $space_8l 0 $space_7l;
+        @include mq(){
+            width: 100%;
+            min-width: 100px;
+            margin: $space_2l auto;
+            padding: $space_m;
+            box-sizing: border-box;
+        }
+    }
+    &__copy{
+        margin: $space_4l 0 $space_6l;
+        text-align: center;
+        font-size: 80px;
+        font-weight: bold;
+        color: $color_base;
+        @include mq(){
+            @include fontsizeVw(80)
+        }
+        &--sub{
+            font-size: $font-size_2l;
+            font-weight: bold;
+            color: $color_base;
+            @include mq(){
+                @include fontsizeVw(24)
+            }
+        }
+    }
+    &__text{
+        margin: $space_l 0 $space_4l;
+        font-size: $font-size_m;
+        color: $color_dark075;
+        line-height: 1.8;
+    }
+    &__btn{
+        @include mq(){
+            margin:0 0 $space_l;
+        }
+    }
+    &__btn__group{
+        width: 50%;
+        min-width: 768px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        @include mq(){
+            width: 100%;
+            min-width: 100px;
+            box-sizing: border-box;
+            flex-direction: column;
+        }
+    }
+}

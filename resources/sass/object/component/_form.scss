@@ -2,91 +2,120 @@
 c-form
 --------------------------------- */
 .c-form {
-  position: relative;
-  &__container {
-    width: 100%;
-    margin: 0 auto;
-    box-sizing: border-box;
-    @include mq(md) {
-      width: 100%;
-      box-sizing: border-box;
-      min-width: 100px;
-    }
-  }
-  &__err {
-    margin-bottom: $space_m;
-    font-size: $font-size_s;
-    color: $color_err;
-  }
-  &__label {
-    font-size: $font-size_m;
-  }
+    position: relative;
 
-  //ユーザ登録・ログイン・問い合わせ
-  &--contact {
-    input[type="text"],
-    input[type="password"] {
-      width: 100%;
-      height: 50px;
-      margin-top: $space_s;
-      margin-bottom: $space_s;
-      padding: $space_m;
-      box-sizing: border-box;
-      background: $color_base;
-      border: 1px solid $color_dark025;
-      font-size: $font-size_m;
-      &::placeholder {
-        color: $color_dark050;
-      }
-    }
-    textarea {
+    &__container {
         width: 100%;
-        margin-top: $space_s;
-        margin-bottom: $space_xl;
-        padding: $space_m;
+        margin: 0 auto;
         box-sizing: border-box;
-        background: $color_base;
-        border: 1px solid $color_dark025;
-        font-size: $font-size_m;
-        &::placeholder {
-          color: $color_dark050;
+        @include mq(md) {
+            width: 100%;
+            box-sizing: border-box;
+            min-width: 100px;
         }
-      }
-    input[type="submit"] {
-      margin-top: $space_l;
-      position: relative;
-      -webkit-appearance: none;
-      @include mq(md) {
-        width: 100%;
-        margin: $space_s 0 $space_l;
-      }
     }
-  }
 
-  //リスト登録・編集・準備
-  &--list {
-    input[type="text"] {
-      width: 100%;
-      height: 40px;
-      padding: $space_s $space_m;
-      box-sizing: border-box;
-      background: $color_base;
-      border: 1px solid $color_dark025;
-      font-size: $font-size_m;
-      &::placeholder {
-        color: $color_dark050;
-      }
+    &__err {
+        margin-bottom: $space_m;
+        font-size: $font-size_s;
+        color: $color_err;
     }
-    input[type="submit"] {
-      margin-top: $space_l;
-      position: relative;
-      -webkit-appearance: none;
-      @include mq(md) {
-        width: 100%;
-      }
+
+    &__label {
+        font-size: $font-size_m;
+
+        &--check {
+            margin-top: $space_m;
+            font-size: $font-size_s;
+        }
     }
-    &__title{
-        margin-bottom: $space_l;
+
+
+    //ユーザ登録・ログイン・問い合わせ
+    &--contact {
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            height: 50px;
+            margin-top: $space_s;
+            margin-bottom: $space_s;
+            padding: $space_m;
+            box-sizing: border-box;
+            background: $color_base;
+            border: 1px solid $color_dark025;
+            font-size: $font-size_m;
+
+            &::placeholder {
+                color: $color_dark050;
+            }
+
+            &.invalid {
+                border: 2px solid $color_err;
+            }
+        }
+
+        textarea {
+            width: 100%;
+            margin-top: $space_s;
+            margin-bottom: $space_xl;
+            padding: $space_m;
+            box-sizing: border-box;
+            background: $color_base;
+            border: 1px solid $color_dark025;
+            font-size: $font-size_m;
+
+            &::placeholder {
+                color: $color_dark050;
+            }
+
+            &.invalid {
+                border: 2px solid $color_err;
+            }
+        }
+
+        input[type="submit"] {
+            margin-top: $space_l;
+            position: relative;
+            -webkit-appearance: none;
+            @include mq(md) {
+                width: 100%;
+                margin: $space_s 0 $space_l;
+            }
+        }
     }
-  }
+
+    //リスト登録・編集・準備
+    &--list {
+        input[type="text"] {
+            width: 100%;
+            height: 40px;
+            padding: $space_s $space_m;
+            box-sizing: border-box;
+            background: $color_base;
+            border: 1px solid $color_dark025;
+            font-size: $font-size_m;
+
+            &::placeholder {
+                color: $color_dark050;
+            }
+
+            &.invalid {
+                border: 2px solid $color_err;
+            }
+        }
+
+        input[type="submit"] {
+            margin-top: $space_l;
+            position: relative;
+            -webkit-appearance: none;
+            @include mq(md) {
+                width: 100%;
+            }
+        }
+
+        &__title {
+            margin-bottom: $space_l;
+        }
+    }
 }

@@ -302,6 +302,10 @@ header
   color: white;
 }
 
+.l-header .nav-menu__list p {
+  cursor: pointer;
+}
+
 @media screen and (max-width: 768px) {
   .l-header .sp__icon {
     font-size: 2.4rem;
@@ -412,7 +416,13 @@ c-form
   font-size: 1.6rem;
 }
 
+.c-form__label--check {
+  margin-top: 10px;
+  font-size: 1.4rem;
+}
+
 .c-form--contact input[type=text],
+.c-form--contact input[type=email],
 .c-form--contact input[type=password] {
   width: 100%;
   height: 50px;
@@ -426,28 +436,39 @@ c-form
 }
 
 .c-form--contact input[type=text]::-webkit-input-placeholder,
+.c-form--contact input[type=email]::-webkit-input-placeholder,
 .c-form--contact input[type=password]::-webkit-input-placeholder {
   color: #C9D0D6;
 }
 
 .c-form--contact input[type=text]::-moz-placeholder,
+.c-form--contact input[type=email]::-moz-placeholder,
 .c-form--contact input[type=password]::-moz-placeholder {
   color: #C9D0D6;
 }
 
 .c-form--contact input[type=text]:-ms-input-placeholder,
+.c-form--contact input[type=email]:-ms-input-placeholder,
 .c-form--contact input[type=password]:-ms-input-placeholder {
   color: #C9D0D6;
 }
 
 .c-form--contact input[type=text]::-ms-input-placeholder,
+.c-form--contact input[type=email]::-ms-input-placeholder,
 .c-form--contact input[type=password]::-ms-input-placeholder {
   color: #C9D0D6;
 }
 
 .c-form--contact input[type=text]::placeholder,
+.c-form--contact input[type=email]::placeholder,
 .c-form--contact input[type=password]::placeholder {
   color: #C9D0D6;
+}
+
+.c-form--contact input[type=text].invalid,
+.c-form--contact input[type=email].invalid,
+.c-form--contact input[type=password].invalid {
+  border: 2px solid #FF0A0A;
 }
 
 .c-form--contact textarea {
@@ -479,6 +500,10 @@ c-form
 
 .c-form--contact textarea::placeholder {
   color: #C9D0D6;
+}
+
+.c-form--contact textarea.invalid {
+  border: 2px solid #FF0A0A;
 }
 
 .c-form--contact input[type=submit] {
@@ -522,6 +547,10 @@ c-form
 
 .c-form--list input[type=text]::placeholder {
   color: #C9D0D6;
+}
+
+.c-form--list input[type=text].invalid {
+  border: 2px solid #FF0A0A;
 }
 
 .c-form--list input[type=submit] {
@@ -1411,6 +1440,7 @@ p-message
   box-sizing: border-box;
   position: fixed;
   top: calc(50% - 60px);
+  left: calc(50% - 60px);
   background: white;
   box-shadow: 0 3px 6px #8B98A2;
   text-align: center;

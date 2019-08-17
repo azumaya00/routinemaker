@@ -32,6 +32,9 @@ header
         margin-left: $space_s;
       font-size: $font-size_s;
       color: $color_base;
+        p{
+            cursor: pointer;
+        }
     }
   }
   .sp__icon{

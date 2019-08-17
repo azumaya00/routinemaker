@@ -9,6 +9,7 @@ p-message
         box-sizing: border-box;
         position: fixed;
         top: calc(50% - 60px);
+        left: calc(50% - 60px);
         background: $color_base;
         box-shadow: 0 3px 6px $color_dark075;
         text-align: center;

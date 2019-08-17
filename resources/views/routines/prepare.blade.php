@@ -1,8 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <main class="l-main">
-        <p>リスト実行準備画面だよ！</p>
-    </main>
-
-
+    <header-component></header-component>
+    <prepare-component></prepare-component>
+    <footer-component></footer-component>
 @endsection

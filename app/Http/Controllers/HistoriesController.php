@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class HistoryController extends Controller
+class HistoriesController extends Controller
 {
     //履歴表示
     //あとでid指定とかを入れる

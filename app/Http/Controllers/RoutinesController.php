@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class RoutineController extends Controller
+class RoutinesController extends Controller
 {
     //マイページ表示
     public function mypage(){

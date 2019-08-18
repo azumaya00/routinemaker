@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'RoutineMaker') }}</title>
+    <title>@yield('title','Home') | Routinemaker</title>
 
     <!-- Fonts -->
     <link
@@ -36,7 +36,7 @@
 
     <!-- フラッシュメッセージここから -->
     @if (session('flash_message'))
-        <div class="p-message__container">
+        <div class="p-message__container" v-bind:class="{'is-active': isActive}">
             <i class="far fa-check-circle p-message__icon"></i>
             <p class="p-message__text">{{session('flash_message')}}</p>
         </div>

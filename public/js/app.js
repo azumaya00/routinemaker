@@ -2006,6 +2006,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "HeaderComponent",
   data: function data() {
@@ -2017,7 +2033,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   props: {
     authcheck: Boolean,
-    logout: String
+    logout: String,
+    user: Object
   },
   computed: {},
   methods: {
@@ -33051,13 +33068,17 @@ var staticRenderFns = [
       _c("div", { staticClass: "info" }, [
         _c("ul", { staticClass: "footer-menu" }, [
           _c("li", { staticClass: "footer-menu__list" }, [
-            _c("a", { attrs: { href: "" } }, [_vm._v("このアプリについて ")])
+            _c("a", { attrs: { href: "/about" } }, [
+              _vm._v("このアプリについて ")
+            ])
           ]),
           _vm._v(" "),
           _c("li", { staticClass: "footer-menu__list" }, [_vm._v("|")]),
           _vm._v(" "),
           _c("li", { staticClass: "footer-menu__list" }, [
-            _c("a", { attrs: { href: "" } }, [_vm._v("プライバシーポリシー")])
+            _c("a", { attrs: { href: "/policy" } }, [
+              _vm._v("プライバシーポリシー")
+            ])
           ]),
           _vm._v(" "),
           _c("li", { staticClass: "footer-menu__list" }, [_vm._v("|")]),
@@ -33125,20 +33146,67 @@ var render = function() {
           ]
         ),
         _vm._v(" "),
-        _vm._m(0)
+        this.authcheck
+          ? _c(
+              "ul",
+              { staticClass: "p-header__sp__menu p-header__sp__menu--left" },
+              [
+                _c(
+                  "li",
+                  {
+                    staticClass:
+                      "p-header__sp__menu__list p-header__sp__menu__list--user"
+                  },
+                  [
+                    _c("p", [_vm._v("account")]),
+                    _vm._v(" "),
+                    _c("p", [_c("span", [_vm._v(_vm._s(this.user["email"]))])])
+                  ]
+                ),
+                _vm._v(" "),
+                _vm._m(0),
+                _vm._v(" "),
+                _vm._m(1),
+                _vm._v(" "),
+                _vm._m(2),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  {
+                    staticClass: "p-header__sp__menu__list",
+                    on: { click: _vm.doLogout }
+                  },
+                  [_vm._v("\n                ログアウト\n            ")]
+                )
+              ]
+            )
+          : _c(
+              "ul",
+              { staticClass: "p-header__sp__menu p-header__sp__menu--left" },
+              [_vm._m(3), _vm._v(" "), _vm._m(4), _vm._v(" "), _vm._m(5)]
+            )
       ]
     ),
     _vm._v(" "),
-    _vm._m(1),
+    _vm._m(6),
     _vm._v(" "),
     _c("nav", [
       this.authcheck
         ? _c("ul", { staticClass: "nav-menu" }, [
-            _vm._m(2),
+            _c("li", { staticClass: "nav-menu__list" }, [
+              _c("p", [
+                _c("i", { staticClass: "fas fa-user nav-menu__icon" }),
+                _vm._v("user: " + _vm._s(this.user["name"]) + " ")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "nav-menu__list" }, [_vm._v("||")]),
+            _vm._v(" "),
+            _vm._m(7),
             _vm._v(" "),
             _c("li", { staticClass: "nav-menu__list" }, [_vm._v("|")]),
             _vm._v(" "),
-            _vm._m(3),
+            _vm._m(8),
             _vm._v(" "),
             _c("li", { staticClass: "nav-menu__list" }, [_vm._v("|")]),
             _vm._v(" "),
@@ -33149,11 +33217,11 @@ var render = function() {
             )
           ])
         : _c("ul", { staticClass: "nav-menu" }, [
-            _vm._m(4),
+            _vm._m(9),
             _vm._v(" "),
             _c("li", { staticClass: "nav-menu__list" }, [_vm._v("|")]),
             _vm._v(" "),
-            _vm._m(5)
+            _vm._m(10)
           ])
     ]),
     _vm._v(" "),
@@ -33177,7 +33245,7 @@ var render = function() {
         class: { active: _vm.isActiveRight },
         on: { click: _vm.toggleRightMenu }
       },
-      [_vm._m(6), _vm._v(" "), _vm._m(7)]
+      [_vm._m(11), _vm._v(" "), _vm._m(12)]
     )
   ])
 }
@@ -33186,36 +33254,57 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "p-header__sp__menu__list" }, [
+      _c("a", { attrs: { href: "/routines/new" } }, [_vm._v("新規リスト作成")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "p-header__sp__menu__list" }, [
+      _c("a", { attrs: { href: "/histories" } }, [_vm._v("履歴を見る")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "p-header__sp__menu__list" }, [
+      _c("a", { attrs: { href: "/mypage" } }, [_vm._v("マイページ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c(
-      "ul",
-      { staticClass: "p-header__sp__menu p-header__sp__menu--left" },
+      "li",
+      {
+        staticClass: "p-header__sp__menu__list p-header__sp__menu__list--user"
+      },
       [
-        _c(
-          "li",
-          {
-            staticClass:
-              "p-header__sp__menu__list p-header__sp__menu__list--user"
-          },
-          [
-            _c("p", [_vm._v("account")]),
-            _vm._v(" "),
-            _c("p", [_c("span", [_vm._v("shimeji@kinkogumi.com")])])
-          ]
-        ),
+        _c("p", [_vm._v("account")]),
         _vm._v(" "),
-        _c("li", { staticClass: "p-header__sp__menu__list" }, [
-          _c("a", { attrs: { href: "" } }, [_vm._v("新規リスト作成")])
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "p-header__sp__menu__list" }, [
-          _c("a", { attrs: { href: "" } }, [_vm._v("履歴を見る")])
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "p-header__sp__menu__list" }, [
-          _c("a", { attrs: { href: "" } }, [_vm._v("ログアウト")])
-        ])
+        _c("p", [_c("span", [_vm._v("ログインしていません")])])
       ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "p-header__sp__menu__list" }, [
+      _c("a", { attrs: { href: "/login" } }, [_vm._v("ログイン")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "p-header__sp__menu__list" }, [
+      _c("a", { attrs: { href: "/register" } }, [_vm._v("新規登録")])
+    ])
   },
   function() {
     var _vm = this
@@ -33238,7 +33327,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("li", { staticClass: "nav-menu__list" }, [
-      _c("a", { attrs: { href: "/history" } }, [_vm._v("履歴を見る")])
+      _c("a", { attrs: { href: "/histories" } }, [_vm._v("履歴を見る")])
     ])
   },
   function() {
@@ -33283,15 +33372,17 @@ var staticRenderFns = [
       { staticClass: "p-header__sp__menu p-header__sp__menu--right" },
       [
         _c("li", { staticClass: "p-header__sp__menu__list" }, [
-          _c("a", { attrs: { href: "" } }, [_vm._v("このアプリについて")])
+          _c("a", { attrs: { href: "/about" } }, [_vm._v("このアプリについて")])
         ]),
         _vm._v(" "),
         _c("li", { staticClass: "p-header__sp__menu__list" }, [
-          _c("a", { attrs: { href: "" } }, [_vm._v("プライバシーポリシー")])
+          _c("a", { attrs: { href: "/policy" } }, [
+            _vm._v("プライバシーポリシー")
+          ])
         ]),
         _vm._v(" "),
         _c("li", { staticClass: "p-header__sp__menu__list" }, [
-          _c("a", { attrs: { href: "contact.html" } }, [_vm._v("お問い合わせ")])
+          _c("a", { attrs: { href: "/contacts" } }, [_vm._v("お問い合わせ")])
         ])
       ]
     )
@@ -33389,15 +33480,15 @@ var staticRenderFns = [
           ),
           _vm._v(" "),
           _c("div", { staticClass: "c-btn__group p-prepare__btn__group" }, [
-            _c(
-              "a",
-              {
-                staticClass:
-                  "c-btn c-btn__square--small c-btn c-btn__square--small--back c-btn--base",
-                attrs: { href: "#" }
-              },
-              [_vm._v("\n                    戻る\n                ")]
-            ),
+            _c("input", {
+              staticClass:
+                "c-btn c-btn__square--small c-btn__square--small--back c-btn--base",
+              attrs: {
+                value: "戻る",
+                onclick: "history.back();",
+                type: "button"
+              }
+            }),
             _vm._v(" "),
             _c(
               "a",
@@ -45666,7 +45757,22 @@ Vue.component('proceed-component', __webpack_require__(/*! ./components/ProceedC
  */
 
 var app = new Vue({
-  el: '#app'
+  el: '#app',
+  data: {
+    isActive: true
+  },
+  props: {},
+  mounted: function mounted() {
+    this.isActive = true; //マウント後1秒経ったらeraseMessageを呼ぶ
+
+    setTimeout(this.eraseMessage, 1000);
+  },
+  methods: {
+    //フラッシュメッセージを見えなくする
+    eraseMessage: function eraseMessage() {
+      this.isActive = false;
+    }
+  }
 });
 
 /***/ }),

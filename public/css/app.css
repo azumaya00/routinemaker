@@ -291,6 +291,8 @@ header
 .l-header .nav-menu {
   height: 50px;
   margin-right: 15px;
+  padding-bottom: 5px;
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -304,6 +306,10 @@ header
 
 .l-header .nav-menu__list p {
   cursor: pointer;
+}
+
+.l-header .nav-menu__icon {
+  margin-right: 5px;
 }
 
 @media screen and (max-width: 768px) {
@@ -506,14 +512,16 @@ c-form
   border: 2px solid #FF0A0A;
 }
 
-.c-form--contact input[type=submit] {
+.c-form--contact input[type=submit],
+.c-form--contact input[type=button] {
   margin-top: 15px;
   position: relative;
   -webkit-appearance: none;
 }
 
 @media screen and (max-width: 768px) {
-  .c-form--contact input[type=submit] {
+  .c-form--contact input[type=submit],
+  .c-form--contact input[type=button] {
     width: 100%;
     margin: 5px 0 15px;
   }
@@ -553,14 +561,16 @@ c-form
   border: 2px solid #FF0A0A;
 }
 
-.c-form--list input[type=submit] {
+.c-form--list input[type=submit],
+.c-form--list input[type=button] {
   margin-top: 15px;
   position: relative;
   -webkit-appearance: none;
 }
 
 @media screen and (max-width: 768px) {
-  .c-form--list input[type=submit] {
+  .c-form--list input[type=submit],
+  .c-form--list input[type=button] {
     width: 100%;
   }
 }
@@ -1446,6 +1456,12 @@ p-message
   text-align: center;
   color: #B8DDF7;
   z-index: 1;
+  opacity: 0;
+  transition: all 0.8s;
+}
+
+.p-message__container.is-active {
+  opacity: 1;
 }
 
 .p-message__icon {
@@ -1537,6 +1553,9 @@ p-header__sp
 
   .p-header__sp__menu__list {
     margin: 10px;
+    font-size: 1.8rem;
+    color: white;
+    cursor: pointer;
   }
 
   .p-header__sp__menu__list--user {

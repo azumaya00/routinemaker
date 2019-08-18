@@ -36,6 +36,21 @@ Vue.component('proceed-component', require('./components/ProceedComponent.vue').
 
 const app = new Vue({
     el: '#app',
+    data: {
+        isActive: true
+    },
+    props: {},
+    mounted: function () {
+        this.isActive = true
+        //マウント後1秒経ったらeraseMessageを呼ぶ
+        setTimeout(this.eraseMessage, 1000)
+    },
+    methods: {
+        //フラッシュメッセージを見えなくする
+        eraseMessage: function(){
+            this.isActive = false
+        }
+    }
 });
 
 

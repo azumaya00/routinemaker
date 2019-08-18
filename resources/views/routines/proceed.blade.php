@@ -1,6 +1,9 @@
 @extends('layouts.app')
+
+@section('title','実行中')
+
 @section('content')
-    <header-component></header-component>
+
     <proceed-component></proceed-component>
-    <footer-component></footer-component>
+
 @endsection

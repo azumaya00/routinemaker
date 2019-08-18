@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
+@section('title','Sign up')
+
 @section('content')
-    <header-component></header-component>
+    <header-component v-bind:authcheck="false" v-bind:logout="'{{route('logout')}}'" v-bind:user="undefined"></header-component>
 
     <main class="l-main l-main--base">
         <div class="l-main__inner">

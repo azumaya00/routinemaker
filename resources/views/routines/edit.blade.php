@@ -1,6 +1,9 @@
 @extends('layouts.app')
+
+@section('title','リスト編集')
+
 @section('content')
-    <header-component></header-component>
+    <header-component v-bind:authcheck="@auth true @endauth @guest false @endguest" v-bind:logout="'{{route('logout')}}'" v-bind:user="{{$user}}"></header-component>
 
     <main class="l-main l-main--base--sub">
         <div class="l-main__inner">
@@ -62,9 +65,8 @@
 
                         <div class="c-btn__group p-list__btn__group">
                             <input
-                                type="submit"
+                                value="{{ __('Back') }}" onclick="history.back();" type="button"
                                 class="c-btn c-btn__square--small c-btn__square--small--back c-btn--base"
-                                value="戻る"
                             />
                             <input
                                 type="submit"

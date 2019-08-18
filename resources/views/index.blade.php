@@ -1,6 +1,9 @@
 @extends('layouts.app')
+
+@section('title','Home')
+
 @section('content')
-    <header-component></header-component>
+    <header-component v-bind:authcheck="@auth true @endauth @guest false @endguest" v-bind:logout="'{{route('logout')}}'" v-bind:user="{{$user}}"></header-component>
 
     <main class="l-main l-main--base">
         <section class="l-hero">
@@ -13,7 +16,7 @@
                     そんな子供のために母ちゃんが考えた<br/>タスク自主管理支援アプリです。
                 </p>
                 <div class="c-btn__group p-hero__btn__group">
-                    <a href="#"
+                    <a href="{{route('register')}}"
                        class="c-btn c-btn__square--flexible c-btn--accent p-hero__btn"
                     >新規会員登録</a
                     >
@@ -27,7 +30,7 @@
         <section class="l-user">
             <div class="p-user__container">
                 <p class="p-user__text">既に会員の方はこちら</p>
-                <a href="#"
+                <a href="{{route('login')}}"
                    class="c-btn c-btn__square--flexible c-btn--base p-user__btn">
                     ログイン</a
                 >

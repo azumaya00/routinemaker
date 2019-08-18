@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <header-component></header-component>
+    <header-component v-bind:authcheck="@auth true @endauth @guest false @endguest" v-bind:logout="'{{route('logout')}}'" v-bind:user="{{$user}}"></header-component>
 
     <!-- ここからcontentにする -->
     <main class="l-main l-main--base">

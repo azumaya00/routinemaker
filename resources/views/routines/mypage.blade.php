@@ -1,7 +1,9 @@
 @extends('layouts.app')
-@section('content')
-    <header-component v-bind:authcheck="@auth true @endauth @guest false @endguest" v-bind:logout="'{{route('logout')}}'"></header-component>
 
+@section('title','マイページ')
+
+@section('content')
+    <header-component v-bind:authcheck="@auth true @endauth @guest false @endguest" v-bind:logout="'{{route('logout')}}'" v-bind:user="{{$user}}"></header-component>
     <main class="l-main l-main--base--sub">
         <div class="l-main__inner">
             <div class="p-mypage__container">
@@ -21,7 +23,7 @@
 
                 <p class="p-mypage__text">リストは5個まで作成出来ます</p>
                 <div class="p-mypage__btn__group">
-                    <a href="#" class="c-btn c-btn__square--small c-btn--accent"
+                    <a href="{{route('routines.new')}}" class="c-btn c-btn__square--small c-btn--accent"
                     >新規作成</a
                     >
                 </div>
@@ -84,7 +86,7 @@
                 <!-- リストここまで -->
 
                 <div class="p-mypage__btn__group">
-                    <a href="#" class="c-btn c-btn__square--small c-btn--base"
+                    <a href="{{route('histories.show')}}" class="c-btn c-btn__square--small c-btn--base"
                     >履歴を見る</a
                     >
                 </div>

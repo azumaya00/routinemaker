@@ -1,6 +1,9 @@
 @extends('layouts.app')
+
+@section('title','履歴')
+
 @section('content')
-    <header-component></header-component>
+    <header-component v-bind:authcheck="@auth true @endauth @guest false @endguest" v-bind:logout="'{{route('logout')}}'" v-bind:user="{{$user}}"></header-component>
 
     <main class="l-main l-main--base--sub">
         <div class="l-main__inner">
@@ -229,9 +232,7 @@
                 <!-- アコーディオンここまで -->
 
                 <div class="p-history__btn__group">
-                    <a href="#" class="c-btn c-btn__square--small c-btn--base"
-                    >戻る</a
-                    >
+                    <input value="{{ __('Back') }}" onclick="history.back();" type="button" class="c-btn c-btn__square--small c-btn--base">
                 </div>
             </div>
         </div>

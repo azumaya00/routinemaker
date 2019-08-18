@@ -28,7 +28,12 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/mypage';
+    //protected $redirectTo = '/mypage';
+    protected function redirectTo()
+    {
+        session()->flash('flash_message', __("Registered!"));
+        return '/mypage';
+    }
 
     /**
      * Create a new controller instance.

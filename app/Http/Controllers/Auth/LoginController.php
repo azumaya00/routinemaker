@@ -25,7 +25,11 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/mypage';
+   // protected $redirectTo = '/mypage';
+    protected function redirectTo(){
+        session()->flash('flash_message', __("Login!"));
+        return '/mypage';
+    }
 
     /**
      * Create a new controller instance.

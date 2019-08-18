@@ -47,10 +47,10 @@
                     ランダムで順番を変える
                 </button>
                 <div class="c-btn__group p-prepare__btn__group">
-                    <a href="#"
-                       class="c-btn c-btn__square--small c-btn c-btn__square--small--back c-btn--base">
-                        戻る
-                    </a>
+                    <input
+                        value="戻る" onclick="history.back();" type="button"
+                        class="c-btn c-btn__square--small c-btn__square--small--back c-btn--base"
+                    />
                     <a href="#"
                        class="c-btn c-btn__square--small c-btn--accent">
                         始める!

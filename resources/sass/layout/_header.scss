@@ -2,61 +2,75 @@
 header
 --------------------------------- */
 .l-header {
-  width: 100%;
-  height: 50px;
-  display: flex;
-  justify-content: space-between;
-  background: $color_dark075;
-  @include mq(){
-    padding: 0 $space_s;
-    box-sizing: border-box;
-  }
-  .logo {
-    margin-left: $space_l;
-    @include mq(){
-      text-align: center;
-    }
-  }
-  nav{
-    @include mq(){
-      display: none;
-    }
-  }
-  .nav-menu {
+    width: 100%;
     height: 50px;
-    margin-right: $space_l;
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
-    &__list {
-        margin-left: $space_s;
-      font-size: $font-size_s;
-      color: $color_base;
-        p{
-            cursor: pointer;
-        }
-    }
-  }
-  .sp__icon{
-    @include mq{
-      font-size: $font-size_2l;
-    }
-    &__container{
-      display: none;
-      @include mq{
-        display: block;
-        width: 10%;
-        align-self: center;
-        text-align: center;
-        color: $color_base;
-      }
-    }
-    &--text{
-      @include mq(){
-        line-height: 1;
-        font-size: $font-size_s;
-      }
+    background: $color_dark075;
+    @include mq() {
+        padding: 0 $space_s;
+        box-sizing: border-box;
     }
 
-  }
+    .logo {
+        margin-left: $space_l;
+        @include mq() {
+            text-align: center;
+        }
+    }
+
+    nav {
+        @include mq() {
+            display: none;
+        }
+    }
+
+    .nav-menu {
+        height: 50px;
+        margin-right: $space_l;
+        padding-bottom: $space_s;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+
+        &__list {
+            margin-left: $space_s;
+            font-size: $font-size_s;
+            color: $color_base;
+
+            p {
+                cursor: pointer;
+            }
+        }
+
+        &__icon {
+            margin-right: $space_s;
+        }
+    }
+
+    .sp__icon {
+        @include mq {
+            font-size: $font-size_2l;
+        }
+
+        &__container {
+            display: none;
+            @include mq {
+                display: block;
+                width: 10%;
+                align-self: center;
+                text-align: center;
+                color: $color_base;
+            }
+        }
+
+        &--text {
+            @include mq() {
+                line-height: 1;
+                font-size: $font-size_s;
+            }
+        }
+
+    }
 }

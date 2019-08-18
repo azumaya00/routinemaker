@@ -12,20 +12,34 @@
                 <i class="fas fa-times p-header__sp__icon"></i>
                 <p class="sp__icon--text">CLOSE</p>
             </div>
-            <ul class="p-header__sp__menu p-header__sp__menu--left">
-                <li class="p-header__sp__menu__list p-header__sp__menu__list--user">
+            <ul class="p-header__sp__menu p-header__sp__menu--left" v-if="this.authcheck">
+                <li class="p-header__sp__menu__list p-header__sp__menu__list--user" >
                     <p>account</p>
-                    <p><span>shimeji@kinkogumi.com</span></p>
+                    <p><span>{{this.user['email']}}</span></p>
                 </li>
                 <li class="p-header__sp__menu__list">
-                    <a href="">新規リスト作成</a>
+                    <a href="/routines/new">新規リスト作成</a>
                 </li>
                 <li class="p-header__sp__menu__list">
-                    <a href="">履歴を見る</a>
+                    <a href="/histories">履歴を見る</a>
                 </li>
                 <li class="p-header__sp__menu__list">
-                    <a href="">ログアウト</a>
+                    <a href="/mypage">マイページ</a>
                 </li>
+                <li class="p-header__sp__menu__list" v-on:click="doLogout">
+                    ログアウト
+                </li>
+            </ul>
+            <ul class="p-header__sp__menu p-header__sp__menu--left" v-else>
+                <li class="p-header__sp__menu__list p-header__sp__menu__list--user" >
+                    <p>account</p>
+                    <p><span>ログインしていません</span></p>
+                </li>
+                <li class="p-header__sp__menu__list">
+                    <a href="/login">ログイン</a>
+                </li>
+                <li class="p-header__sp__menu__list">
+                    <a href="/register">新規登録</a></li>
             </ul>
         </div>
         <!-- SP用userメニューここまで -->
@@ -36,9 +50,11 @@
 
         <nav>
             <ul class="nav-menu" v-if="this.authcheck">
+                <li class="nav-menu__list"><p><i class="fas fa-user nav-menu__icon"></i>user: {{this.user['name']}} </p></li>
+                <li class="nav-menu__list">||</li>
                 <li class="nav-menu__list"><a href="/mypage">マイページ</a></li>
                 <li class="nav-menu__list">|</li>
-                <li class="nav-menu__list"><a href="/history">履歴を見る</a></li>
+                <li class="nav-menu__list"><a href="/histories">履歴を見る</a></li>
                 <li class="nav-menu__list">|</li>
                 <li class="nav-menu__list" v-on:click="doLogout"><p>ログアウト</p>
                 </li>
@@ -65,13 +81,13 @@
             </div>
             <ul class="p-header__sp__menu p-header__sp__menu--right">
                 <li class="p-header__sp__menu__list">
-                    <a href="">このアプリについて</a>
+                    <a href="/about">このアプリについて</a>
                 </li>
                 <li class="p-header__sp__menu__list">
-                    <a href="">プライバシーポリシー</a>
+                    <a href="/policy">プライバシーポリシー</a>
                 </li>
                 <li class="p-header__sp__menu__list">
-                    <a href="contact.html">お問い合わせ</a>
+                    <a href="/contacts">お問い合わせ</a>
                 </li>
             </ul>
         </div>
@@ -93,7 +109,8 @@
         },
         props: {
             authcheck: Boolean,
-            logout: String
+            logout: String,
+            user: Object
         },
         computed: {},
         methods: {

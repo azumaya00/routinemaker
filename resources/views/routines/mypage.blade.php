@@ -32,56 +32,23 @@
 
                 <!-- リストここから -->
                 <ul class="p-mypage__list">
+
+                    @foreach($routines as $routine)
                     <li class="p-mypage__list__item">
-                        <div class="p-mypage__list__item--left">
-                            Todoリストタイトル
-                        </div>
+                        <a href="{{route('routines.prepare', $routine -> id)}}"  class="p-mypage__list__item--left">
+                                {{ $routine -> title }}
+                        </a>
                         <div class="p-mypage__list__item--right">
-                            <a href="#"><i
+                            <a href="{{ route('routines.edit', $routine -> id) }}"><i
                                     class="fas fa-edit p-mypage__icon"></i></a>
-                            <i class="fas fa-trash-alt p-mypage__icon"></i>
+                            <form action="{{route('routines.delete', $routine -> id)}}" method="POST" class="d-inline">
+                                @csrf
+                                <button type="submit" class="p-mypage__btn--delete"><i class="fas fa-trash-alt p-mypage__icon"></i></button>
+                            </form>
                         </div>
                     </li>
-                    <li class="p-mypage__list__item">
-                        <div class="p-mypage__list__item--left">
-                            Todoリストタイトル
-                        </div>
-                        <div class="p-mypage__list__item--right">
-                            <a href="#"><i
-                                    class="fas fa-edit p-mypage__icon"></i></a>
-                            <i class="fas fa-trash-alt p-mypage__icon"></i>
-                        </div>
-                    </li>
-                    <li class="p-mypage__list__item">
-                        <div class="p-mypage__list__item--left">
-                            Todoリストタイトル
-                        </div>
-                        <div class="p-mypage__list__item--right">
-                            <a href="#"><i
-                                    class="fas fa-edit p-mypage__icon"></i></a>
-                            <i class="fas fa-trash-alt p-mypage__icon"></i>
-                        </div>
-                    </li>
-                    <li class="p-mypage__list__item">
-                        <div class="p-mypage__list__item--left">
-                            リストタイトルがとっても長くなったやつ
-                        </div>
-                        <div class="p-mypage__list__item--right">
-                            <a href="#"><i
-                                    class="fas fa-edit p-mypage__icon"></i></a>
-                            <i class="fas fa-trash-alt p-mypage__icon"></i>
-                        </div>
-                    </li>
-                    <li class="p-mypage__list__item">
-                        <div class="p-mypage__list__item--left">
-                            Todoリストタイトル
-                        </div>
-                        <div class="p-mypage__list__item--right">
-                            <a href="#"><i
-                                    class="fas fa-edit p-mypage__icon"></i></a>
-                            <i class="fas fa-trash-alt p-mypage__icon"></i>
-                        </div>
-                    </li>
+                    @endforeach
+
                 </ul>
                 <!-- リストここまで -->
 

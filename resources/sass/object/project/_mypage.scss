@@ -29,11 +29,19 @@ p-mypage
             display: none;
         }
     }
-    &__btn__group{
-        margin: $space_2l;
-        text-align: center;
-        @include mq(){
-            display: none;
+    &__btn{
+        &__group{
+            margin: $space_2l;
+            text-align: center;
+            @include mq(){
+                display: none;
+            }
+        }
+        &--delete{
+            border: 0;
+            color: $color_main;
+            font-size: $font-size_m;
+            cursor: pointer;
         }
     }
     &__list{
@@ -50,17 +58,20 @@ p-mypage
                 padding: $space_l $space_m;
             }
             &--left{
+                display: inline-block;
                 width: 80%;
                 color: $font-color_default;
 
             }
             &--right{
                 width: 20%;
+                display: flex;
+                justify-content: flex-end;
                 color: $color_main;
                 text-align: right;
                 cursor: pointer;
                 a{
-                    color: $color_main; 
+                    color: $color_main;
                 }
             }
         }

@@ -36,10 +36,10 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::post('/routines', 'RoutinesController@create')->name('routines.create'); //新規リスト作成
     Route::post('/routines/{id}', 'RoutinesController@update')->name('routines.update'); //リストアップデート
-    Route::post('/routines/{id}', 'RoutinesController@delete')->name('routines.delete'); //リスト削除
-    Route::post('/routines/{id}', 'RoutinesController@start')->name('routines.start'); //リスト実行開始
-    Route::post('/routines/{id}', 'RoutinesController@finish')->name('routines.finish'); //リスト完了
-    Route::post('/routines/{id}', 'RoutinesController@suspend')->name('routines.suspend'); //リスト中断
+    Route::post('/routines/{id}/delete', 'RoutinesController@delete')->name('routines.delete'); //リスト削除
+    Route::post('/routines/{id}/start', 'RoutinesController@start')->name('routines.start'); //リスト実行開始
+    Route::post('/routines/{id}/finish', 'RoutinesController@finish')->name('routines.finish'); //リスト完了
+    Route::post('/routines/{id}/suspend', 'RoutinesController@suspend')->name('routines.suspend'); //リスト中断
 });
 
 //ログイン不要

@@ -42,8 +42,8 @@ const app = new Vue({
     props: {},
     mounted: function () {
         this.isActive = true
-        //マウント後1秒経ったらeraseMessageを呼ぶ
-        setTimeout(this.eraseMessage, 1000)
+        //マウント後1.2秒経ったらeraseMessageを呼ぶ
+        setTimeout(this.eraseMessage, 1200)
     },
     methods: {
         //フラッシュメッセージを見えなくする

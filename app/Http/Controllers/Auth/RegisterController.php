@@ -31,7 +31,7 @@ class RegisterController extends Controller
     //protected $redirectTo = '/mypage';
     protected function redirectTo()
     {
-        session()->flash('flash_message', __("Registered!"));
+        session()->flash('scc_message', __("Registered!"));
         return '/mypage';
     }
 

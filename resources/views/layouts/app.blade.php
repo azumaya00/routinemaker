@@ -35,10 +35,20 @@
 <!-- content end -->
 
     <!-- フラッシュメッセージここから -->
-    @if (session('flash_message'))
-        <div class="p-message__container" v-bind:class="{'is-active': isActive}">
-            <i class="far fa-check-circle p-message__icon"></i>
-            <p class="p-message__text">{{session('flash_message')}}</p>
+    @if (session('scc_message'))
+        <div class="p-message__container p-message__container--success" v-bind:class="{'is-active': isActive}">
+            <i class="fas fa-check-circle p-message__icon"></i>
+            <div class="p-message__text">
+                <p >{{session('scc_message')}}</p>
+            </div>
+        </div>
+@endif
+    @if (session('err_message'))
+        <div class="p-message__container p-message__container--error" v-bind:class="{'is-active': isActive}">
+            <i class="fas fa-exclamation-circle p-message__icon"></i>
+            <div class="p-message__text">
+                <p >{{session('err_message')}}</p>
+            </div>
         </div>
 @endif
 <!-- フラッシュメッセージここまで -->

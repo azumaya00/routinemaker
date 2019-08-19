@@ -1,31 +1,44 @@
 /* ---------------------------------
 p-message
 --------------------------------- */
-.p-message{
-    &__container{
-        width: 120px;
-        height: 120px;
+.p-message {
+    &__container {
+        width: 150px;
+        height: 150px;
         padding: $space_m;
         box-sizing: border-box;
         position: fixed;
-        top: calc(50% - 60px);
-        left: calc(50% - 60px);
+        top: calc(50% - 75px);
+        left: calc(50% - 75px);
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
         background: $color_base;
         box-shadow: 0 3px 6px $color_dark075;
         text-align: center;
-        color: $color_main;
         z-index: 1;
         opacity: 0;
         transition: all 0.8s;
-        &.is-active{
+
+        &--success {
+            color: $color_main;
+        }
+
+        &--error {
+            color: $color_accent;
+        }
+
+        &.is-active {
             opacity: 1;
         }
     }
-    &__icon{
-        margin: $space_l 0 $space_s;
+
+    &__icon {
+        margin-bottom: $space_s;
         font-size: 52px;
     }
-    &__text{
+
+    &__text {
         font-size: $font-size_s;
     }
 }

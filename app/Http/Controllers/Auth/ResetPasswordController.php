@@ -28,7 +28,7 @@ class ResetPasswordController extends Controller
     //protected $redirectTo = '/home';
     protected function redirectTo()
     {
-        session()->flash('flash_message', __("リセット完了!"));
+        session()->flash('scc_message', __("リセット完了!"));
         return '/mypage';
     }
 

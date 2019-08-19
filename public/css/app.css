@@ -1090,6 +1090,13 @@ p-mypage
   }
 }
 
+.p-mypage__btn--delete {
+  border: 0;
+  color: #B8DDF7;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
 .p-mypage__list__item {
   width: 100%;
   padding: 10px;
@@ -1108,12 +1115,15 @@ p-mypage
 }
 
 .p-mypage__list__item--left {
+  display: inline-block;
   width: 80%;
   color: #272B2D;
 }
 
 .p-mypage__list__item--right {
   width: 20%;
+  display: flex;
+  justify-content: flex-end;
   color: #B8DDF7;
   text-align: right;
   cursor: pointer;
@@ -1444,20 +1454,30 @@ p-message
 --------------------------------- */
 
 .p-message__container {
-  width: 120px;
-  height: 120px;
+  width: 150px;
+  height: 150px;
   padding: 10px;
   box-sizing: border-box;
   position: fixed;
-  top: calc(50% - 60px);
-  left: calc(50% - 60px);
+  top: calc(50% - 75px);
+  left: calc(50% - 75px);
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
   background: white;
   box-shadow: 0 3px 6px #8B98A2;
   text-align: center;
-  color: #B8DDF7;
   z-index: 1;
   opacity: 0;
   transition: all 0.8s;
+}
+
+.p-message__container--success {
+  color: #B8DDF7;
+}
+
+.p-message__container--error {
+  color: #FFCCBA;
 }
 
 .p-message__container.is-active {
@@ -1465,7 +1485,7 @@ p-message
 }
 
 .p-message__icon {
-  margin: 15px 0 5px;
+  margin-bottom: 5px;
   font-size: 52px;
 }
 

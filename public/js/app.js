@@ -45763,9 +45763,9 @@ var app = new Vue({
   },
   props: {},
   mounted: function mounted() {
-    this.isActive = true; //マウント後1秒経ったらeraseMessageを呼ぶ
+    this.isActive = true; //マウント後1.2秒経ったらeraseMessageを呼ぶ
 
-    setTimeout(this.eraseMessage, 1000);
+    setTimeout(this.eraseMessage, 1200);
   },
   methods: {
     //フラッシュメッセージを見えなくする

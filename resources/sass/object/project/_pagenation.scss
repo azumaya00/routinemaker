@@ -1,0 +1,21 @@
+/* ---------------------------------
+p-pagination
+--------------------------------- */
+.pagination{
+    margin-top: $space_xl;
+    display: flex;
+    justify-content: center;
+}
+.page-item{
+    margin: 0 $space_s;
+    padding: $space_s $space_m;
+    background: $color_base;
+    font-size: $font-size_m;
+    color: $color_dark075;
+    .page-link{
+        color: $color_dark075;
+    }
+    &.active{
+        background: $color_accent;
+    }
+}

@@ -3,7 +3,10 @@
 @section('title','履歴')
 
 @section('content')
-    <header-component v-bind:authcheck="@auth true @endauth @guest false @endguest" v-bind:logout="'{{route('logout')}}'" v-bind:user="{{$user}}"></header-component>
+    <header-component
+        v-bind:authcheck="@auth true @endauth @guest false @endguest"
+        v-bind:logout="'{{route('logout')}}'"
+        v-bind:user="{{$user}}"></header-component>
 
     <main class="l-main l-main--base--sub">
         <div class="l-main__inner">
@@ -11,228 +14,78 @@
                 <!-- スマホ用メニューここから -->
                 <div class="p-history__sp__menu">
                     <div class="p-history__sp__menu--left">
-                        <a href="mypage" class="p-history__sp__link">マイリスト</a>
+                        <a href="mypage" class="p-history__sp__link">{{__('My List')}}</a>
                     </div>
                     <div class="p-history__sp__menu--right">
-                        <p class="p-history__sp__link">履歴</p>
+                        <p class="p-history__sp__link">{{__('History')}}</p>
                     </div>
                 </div>
                 <!-- スマホ用メニューここまで -->
-                <h2 class="p-history__title">実行履歴</h2>
+                <h2 class="p-history__title">{{__('History')}}</h2>
 
                 <!-- アコーディオンここから -->
                 <div class="c-accordion">
                     <!-- accordion component start -->
+
+                    @foreach($histories as $history)
+
                     <div class="p-history__head">
                         <div class="p-history__head--left">
                             <ul class="p-history__list">
                                 <li class="p-history__list__item">
-                                    8月15日
+                                    {{ date('Y年m月d日', strtotime($history -> started_at)) }}
                                 </li>
                                 <li class="p-history__list__item">
-                                    リストタイトルがとっても長くなったやつ
+                                    {{ $history -> title }}
                                 </li>
                             </ul>
                         </div>
-                        <div class="p-history__head--right completed"></div>
+                        <div class="p-history__head--right @if($history -> completion) completed @else incomplete @endif"></div>
                     </div>
                     <input
                         type="checkbox"
-                        id="his1"
+                        id="{{ $history ->id }}"
                         name=""
                         class="c-accordion__tab"
                     />
-                    <label for="his1" class="c-accordion__label">詳しく見る</label>
+                    <label for="{{ $history ->id }}" class="c-accordion__label">詳しく見る</label>
                     <div class="c-accordion__content">
                         <ul class="p-history__list">
                             <li class="p-history__list__item">
-                                かかった時間: 2時間30分
+                                かかった時間: {{date('G時間I分s秒', strtotime($history -> finished_at) - strtotime($history -> started_at))}}
                             </li>
                             <li class="p-history__list__item">
                                 実行順:
                                 <ol class="p-history__list--sub">
-                                    <li class="p-history__list__item--sub">
-                                        数学の問題
+                                    @for($i=1; $i<=10; $i++)
+                                        @php
+                                            $task = 'task'.($i-1);
+                                        @endphp
+                                        @if(!($history -> $task))
+                                            @continue
+                                        @endif
+                                        <li class="p-history__list__item--sub">
+                                        {{ $history -> $task }}
                                     </li>
-                                    <li class="p-history__list__item--sub">
-                                        科学の本
-                                    </li>
+                                    @endfor
                                 </ol>
                             </li>
                         </ul>
                     </div>
-                    <!-- accordion component end -->
-                    <!-- accordion component start -->
-                    <div class="p-history__head">
-                        <div class="p-history__head--left">
-                            <ul class="p-history__list">
-                                <li class="p-history__list__item">
-                                    8月15日
-                                </li>
-                                <li class="p-history__list__item">
-                                    Todoリストタイトル
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="p-history__head--right completed"></div>
-                    </div>
-                    <input
-                        type="checkbox"
-                        id="his2"
-                        name=""
-                        class="c-accordion__tab"
-                    />
-                    <label for="his2" class="c-accordion__label">詳しく見る</label>
-                    <div class="c-accordion__content">
-                        <ul class="p-history__list">
-                            <li class="p-history__list__item">
-                                かかった時間: 2時間30分
-                            </li>
-                            <li class="p-history__list__item">
-                                実行順:
-                                <ol class="p-history__list--sub">
-                                    <li class="p-history__list__item--sub">
-                                        数学の問題
-                                    </li>
-                                    <li class="p-history__list__item--sub">
-                                        科学の本
-                                    </li>
-                                </ol>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- accordion component end -->
-                    <!-- accordion component start -->
-                    <div class="p-history__head">
-                        <div class="p-history__head--left">
-                            <ul class="p-history__list">
-                                <li class="p-history__list__item">
-                                    8月15日
-                                </li>
-                                <li class="p-history__list__item">
-                                    Todoリストタイトル
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="p-history__head--right completed"></div>
-                    </div>
-                    <input
-                        type="checkbox"
-                        id="his3"
-                        name=""
-                        class="c-accordion__tab"
-                    />
-                    <label for="his3" class="c-accordion__label">詳しく見る</label>
-                    <div class="c-accordion__content">
-                        <ul class="p-history__list">
-                            <li class="p-history__list__item">
-                                かかった時間: 2時間30分
-                            </li>
-                            <li class="p-history__list__item">
-                                実行順:
-                                <ol class="p-history__list--sub">
-                                    <li class="p-history__list__item--sub">
-                                        数学の問題
-                                    </li>
-                                    <li class="p-history__list__item--sub">
-                                        科学の本
-                                    </li>
-                                    <li class="p-history__list__item--sub">
-                                        ご飯作る
-                                    </li>
-                                    <li class="p-history__list__item--sub">
-                                        洗い物
-                                    </li>
-                                </ol>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- accordion component end -->
-                    <!-- accordion component start -->
-                    <div class="p-history__head">
-                        <div class="p-history__head--left">
-                            <ul class="p-history__list">
-                                <li class="p-history__list__item">
-                                    8月15日
-                                </li>
-                                <li class="p-history__list__item">
-                                    Todoリストタイトル
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="p-history__head--right incomplete"></div>
-                    </div>
-                    <input
-                        type="checkbox"
-                        id="his4"
-                        name=""
-                        class="c-accordion__tab"
-                    />
-                    <label for="his4" class="c-accordion__label">詳しく見る</label>
-                    <div class="c-accordion__content">
-                        <ul class="p-history__list">
-                            <li class="p-history__list__item">
-                                かかった時間: 2時間30分
-                            </li>
-                            <li class="p-history__list__item">
-                                実行順:
-                                <ol class="p-history__list--sub">
-                                    <li class="p-history__list__item--sub">
-                                        数学の問題
-                                    </li>
-                                    <li class="p-history__list__item--sub">
-                                        科学の本
-                                    </li>
-                                </ol>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- accordion component end -->
-                    <!-- accordion component start -->
-                    <div class="p-history__head">
-                        <div class="p-history__head--left">
-                            <ul class="p-history__list">
-                                <li class="p-history__list__item">
-                                    8月15日
-                                </li>
-                                <li class="p-history__list__item">
-                                    Todoリストタイトル
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="p-history__head--right completed"></div>
-                    </div>
-                    <input
-                        type="checkbox"
-                        id="his5"
-                        name=""
-                        class="c-accordion__tab"
-                    />
-                    <label for="his5" class="c-accordion__label">詳しく見る</label>
-                    <div class="c-accordion__content">
-                        <ul class="p-history__list">
-                            <li class="p-history__list__item">
-                                かかった時間: 2時間30分
-                            </li>
-                            <li class="p-history__list__item">
-                                実行順:
-                                <ol class="p-history__list--sub">
-                                    <li class="p-history__list__item--sub">
-                                        数学の問題
-                                    </li>
-                                    <li class="p-history__list__item--sub">
-                                        科学の本
-                                    </li>
-                                </ol>
-                            </li>
-                        </ul>
-                    </div>
+
+                    @endforeach
                     <!-- accordion component end -->
                 </div>
                 <!-- アコーディオンここまで -->
 
+                <!-- ページネーションここから -->
+            {{ $histories->links() }}
+            <!-- ページネーションここまで -->
+
                 <div class="p-history__btn__group">
-                    <input value="{{ __('Back') }}" onclick="history.back();" type="button" class="c-btn c-btn__square--small c-btn--base">
+                    <input value="{{ __('Back') }}" onclick="history.back();"
+                           type="button"
+                           class="c-btn c-btn__square--small c-btn--base">
                 </div>
             </div>
         </div>

@@ -10,11 +10,11 @@
                 <!-- スマホ用メニューここから -->
                 <div class="p-mypage__sp__menu">
                     <div class="p-mypage__sp__menu--left">
-                        <p class="p-mypage__sp__link">マイリスト</p>
+                        <p class="p-mypage__sp__link">{{__('My List')}}</p>
                     </div>
                     <div class="p-mypage__sp__menu--right">
                         <a href="{{route('histories.show')}}"
-                           class="p-mypage__sp__link">履歴</a>
+                           class="p-mypage__sp__link">{{__('History')}}</a>
                     </div>
                 </div>
                 <!-- スマホ用メニューここまで -->
@@ -43,7 +43,7 @@
                                     class="fas fa-edit p-mypage__icon"></i></a>
                             <form action="{{route('routines.delete', $routine -> id)}}" method="POST" class="d-inline">
                                 @csrf
-                                <button type="submit" class="p-mypage__btn--delete"><i class="fas fa-trash-alt p-mypage__icon"></i></button>
+                                <button type="submit" class="p-mypage__btn--delete" onclick='return confirm("{{__('Do you really delete it?')}}")'><i class="fas fa-trash-alt p-mypage__icon"></i></button>
                             </form>
                         </div>
                     </li>

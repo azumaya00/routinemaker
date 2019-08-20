@@ -4,46 +4,28 @@
             <div class="p-prepare__container">
                 <h2 class="p-prepare__title">このリストを実行します</h2>
                 <h3 class="p-prepare__list__title">
-                    このリストのタイトル
+                    {{routine.title}}
                 </h3>
                 <div class="p-prepare__text">
                     <p>ドラッグ&ドロップで順番を変更できます。</p>
                 </div>
                 <!-- リストスタート -->
                 <ul class="p-prepare__list">
-                    <li class="p-prepare__list__item">
-                        タスク1
-                    </li>
-                    <li class="p-prepare__list__item">
-                        タスク2
-                    </li>
-                    <li class="p-prepare__list__item">
-                        タスク3
-                    </li>
-                    <li class="p-prepare__list__item">
-                        タスク4
-                    </li>
-                    <li class="p-prepare__list__item">
-                        タスク5
-                    </li>
-                    <li class="p-prepare__list__item">
-                        タスク6
-                    </li>
-                    <li class="p-prepare__list__item">
-                        タスク7
-                    </li>
-                    <li class="p-prepare__list__item">
-                        タスク8
-                    </li>
-                    <li class="p-prepare__list__item">
-                        タスク9
-                    </li>
-                    <li class="p-prepare__list__item">
-                        タスク10
-                    </li>
+
+                    <draggable v-model="tasks">
+                        <transition-group name="prepare">
+                            <li class="p-prepare__list__item"
+                                v-for="item in tasks"
+                                v-bind:key="item">
+                                {{item}}
+                            </li>
+                        </transition-group>
+                    </draggable>
+
                 </ul>
 
-                <button class="c-btn c-btn__square--middle c-btn--random">
+                <button class="c-btn c-btn__square--middle c-btn--random"
+                        v-on:click="doShuffle">
                     ランダムで順番を変える
                 </button>
                 <div class="c-btn__group p-prepare__btn__group">
@@ -63,8 +45,40 @@
 </template>
 
 <script>
+    import draggable from 'vuedraggable';
+
     export default {
-        name: "PrepareComponent"
+        name: "PrepareComponent",
+        components: {
+            draggable,
+        },
+        data: function () {
+            return {
+                tasks: []
+            }
+        },
+        props: {
+            routine: Object,
+        },
+        created: function () {
+            //historiesテーブルからタスクのみの配列を作る
+            for (let i = 0; i <= 9; i++) {
+                let order = 'task' + i
+                if (this.routine[order]) {
+                    this.tasks.splice(i, 0, this.routine[order])
+                } else {
+                    //タスクがnullの時は配列に入れない
+                    continue
+                }
+            }
+        },
+        computed: {},
+        methods: {
+            //リストの順番をランダムに変える
+            doShuffle: function () {
+                this.tasks = _.shuffle(this.tasks)
+            }
+        }
     }
 </script>
 

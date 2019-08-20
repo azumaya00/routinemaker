@@ -925,6 +925,11 @@ p-prepare
   font-size: 2.4rem;
   font-weight: bold;
   color: #B8DDF7;
+  cursor: move;
+}
+
+.prepare-move {
+  transition: transform 0.7s;
 }
 
 /* ---------------------------------
@@ -1095,6 +1100,10 @@ p-mypage
   color: #B8DDF7;
   font-size: 1.6rem;
   cursor: pointer;
+}
+
+.p-mypage__btn--delete:focus {
+  outline: 0;
 }
 
 .p-mypage__list__item {
@@ -1592,5 +1601,31 @@ p-header__sp
     font-size: 1.8rem;
     color: white;
   }
+}
+
+/* ---------------------------------
+p-pagination
+--------------------------------- */
+
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.page-item {
+  margin: 0 5px;
+  padding: 5px 10px;
+  background: white;
+  font-size: 1.6rem;
+  color: #8B98A2;
+}
+
+.page-item .page-link {
+  color: #8B98A2;
+}
+
+.page-item.active {
+  background: #FFCCBA;
 }
 

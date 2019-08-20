@@ -106,10 +106,18 @@ class RoutinesController extends Controller
     //準備画面表示
     public function prepare($id)
     {
+        //idが数字かどうかチェックする
+        if(!ctype_digit($id)){
+            //不正な場合はエラーメッセつけてマイページへ
+            return redirect('/mypage')->with('err_message','Invalid operation');
+        }
+
         //ユーザ情報を取得
         $user = Auth::user();
+        //表示するリストを取得
+        $routine = Auth::user()->routines->find($id);
         //ビュー表示
-        return view('routines.prepare', ['user' => $user]);
+        return view('routines.prepare', ['user' => $user, 'routine' => $routine]);
     }
 
     //実行中画面表示

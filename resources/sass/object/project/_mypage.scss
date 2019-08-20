@@ -42,6 +42,9 @@ p-mypage
             color: $color_main;
             font-size: $font-size_m;
             cursor: pointer;
+            &:focus{
+                outline: 0;
+            }
         }
     }
     &__list{

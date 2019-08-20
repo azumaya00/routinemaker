@@ -55,7 +55,13 @@ p-prepare
             font-size: $font-size_2l;
             font-weight: bold;
             color: $color_main;
+            cursor: move;
         }
     }
   }
+}
+
+//リストのアニメーション
+.prepare-move{
+    transition: transform .7s;
 }

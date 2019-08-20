@@ -14,7 +14,10 @@ class HistoriesController extends Controller
     public function show(){
         //ユーザ情報を取得
         $user = Auth::user();
+        //履歴を取得
+        //latestで新しい順に
+        $histories = Auth::user()->histories()->latest('finished_at')->paginate(5);
         //ビュー表示
-        return view('histories.show', ['user' => $user]);
+        return view('histories.show', ['user' => $user, 'histories' => $histories]);
     }
 }

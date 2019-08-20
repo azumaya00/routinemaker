@@ -5,7 +5,7 @@
 @section('content')
     <header-component v-bind:authcheck="@auth true @endauth @guest false @endguest" v-bind:logout="'{{route('logout')}}'" v-bind:user="{{$user}}"></header-component>
 
-    <prepare-component></prepare-component>
+    <prepare-component v-bind:routine="{{$routine}}"></prepare-component>
 
     <footer-component></footer-component>
 @endsection

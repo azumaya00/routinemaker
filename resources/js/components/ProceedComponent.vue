@@ -32,6 +32,9 @@
         data: function () {
             return {}
         },
+        props: {
+            history: Object,
+        },
         computed: {},
         methods: {}
     }

@@ -4,6 +4,6 @@
 
 @section('content')
 
-    <proceed-component></proceed-component>
+    <proceed-component v-bind:history="{{$history}}"></proceed-component>
 
 @endsection

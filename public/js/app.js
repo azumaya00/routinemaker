@@ -2117,8 +2117,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "PrepareComponent",
@@ -2127,7 +2125,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      tasks: []
+      tasks: [],
+      historyId: 1
     };
   },
   props: {
@@ -2151,6 +2150,25 @@ __webpack_require__.r(__webpack_exports__);
     //リストの順番をランダムに変える
     doShuffle: function doShuffle() {
       this.tasks = _.shuffle(this.tasks);
+    },
+    //リスト実行開始
+    startProcess: function startProcess() {
+      //idとタスク順を変数につめる
+      var data = this.tasks;
+      var id = this.routine.id; //axios内でthisを使える様にする
+
+      var self = this; //axiosでDB保存
+
+      axios.post('/routines/' + id + '/start', data).then(function (response) {
+        self.historyId = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+      }); //保存後実行中ページへ遷移
+      //データ反映を待つので500ms後
+
+      setTimeout(function () {
+        window.location.href = '/routines/' + self.historyId + '/proceed';
+      }, 500);
     }
   }
 });
@@ -2198,6 +2216,9 @@ __webpack_require__.r(__webpack_exports__);
   name: "ProceedComponent",
   data: function data() {
     return {};
+  },
+  props: {
+    history: Object
   },
   computed: {},
   methods: {}
@@ -35959,7 +35980,19 @@ var render = function() {
           [_vm._v("\n                ランダムで順番を変える\n            ")]
         ),
         _vm._v(" "),
-        _vm._m(1)
+        _c("div", { staticClass: "c-btn__group p-prepare__btn__group" }, [
+          _c("input", {
+            staticClass:
+              "c-btn c-btn__square--small c-btn__square--small--back c-btn--base",
+            attrs: { value: "戻る", onclick: "history.back();", type: "button" }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "c-btn c-btn__square--small c-btn--accent",
+            attrs: { value: "始める！", type: "button" },
+            on: { click: _vm.startProcess }
+          })
+        ])
       ])
     ])
   ])
@@ -35971,27 +36004,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "p-prepare__text" }, [
       _c("p", [_vm._v("ドラッグ&ドロップで順番を変更できます。")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "c-btn__group p-prepare__btn__group" }, [
-      _c("input", {
-        staticClass:
-          "c-btn c-btn__square--small c-btn__square--small--back c-btn--base",
-        attrs: { value: "戻る", onclick: "history.back();", type: "button" }
-      }),
-      _vm._v(" "),
-      _c(
-        "a",
-        {
-          staticClass: "c-btn c-btn__square--small c-btn--accent",
-          attrs: { href: "#" }
-        },
-        [_vm._v("\n                    始める!\n                ")]
-      )
     ])
   }
 ]

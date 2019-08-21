@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth; //認証に関わる物を使う
 use Illuminate\Support\Facades\Log; //ログを取る
 use App; //名前空間の指定
 use App\Http\Requests\CreateRoutineRequest; //バリデーションを使う
+use Carbon\Carbon; //現在時刻取得用
 
 class RoutinesController extends Controller
 {
@@ -28,13 +29,13 @@ class RoutinesController extends Controller
         $user = Auth::user();
         //今登録しているリストの数を取得
         $totalList = App\Routine::where('user_id', $user['id'])->count();
-        Log::debug('現在のリスト数: '.$totalList);
+        Log::debug('現在のリスト数: ' . $totalList);
 
         //リスト数が5個を超えていないなら新規リスト登録画面へ
-        if($totalList <5){
+        if ($totalList < 5) {
             //ビュー表示
             return view('routines.new', ['user' => $user]);
-        }else{
+        } else {
             //５個以上の場合はマイページへ
             //エラーメッセも
             return redirect('/mypage')->with('err_message', __(('Max List is 5')));
@@ -43,7 +44,8 @@ class RoutinesController extends Controller
     }
 
     //新規リスト登録;
-    public function create(CreateRoutineRequest $request){
+    public function create(CreateRoutineRequest $request)
+    {
         //バリデーションはフォームリクエスト側でok
         Log::debug('バリデーションok');
         //モデルのインスタンス作成
@@ -59,11 +61,12 @@ class RoutinesController extends Controller
     }
 
     //リスト削除
-    public function delete($id){
+    public function delete($id)
+    {
         //idが数字かどうかチェックする
-        if(!ctype_digit($id)){
+        if (!ctype_digit($id)) {
             //不正な場合はエラーメッセつけてマイページへ
-            return redirect('/mypage')->with('err_message','Invalid operation');
+            return redirect('/mypage')->with('err_message', 'Invalid operation');
         }
         //問題無ければDBから削除
         Auth::user()->routines()->find($id)->delete();
@@ -75,9 +78,9 @@ class RoutinesController extends Controller
     public function edit($id)
     {
         //idが数字かどうかチェックする
-        if(!ctype_digit($id)){
+        if (!ctype_digit($id)) {
             //不正な場合はエラーメッセつけてマイページへ
-            return redirect('/mypage')->with('err_message','Invalid operation');
+            return redirect('/mypage')->with('err_message', 'Invalid operation');
         }
 
         //ユーザ情報を取得
@@ -89,7 +92,8 @@ class RoutinesController extends Controller
     }
 
     //リスト編集機能
-    public function update(CreateRoutineRequest $request, $id){
+    public function update(CreateRoutineRequest $request, $id)
+    {
         //バリデーションはフォームリクエスト利用
         //今回変更するリストを取得
         $routine = Auth::user()->routines->find($id);
@@ -107,9 +111,9 @@ class RoutinesController extends Controller
     public function prepare($id)
     {
         //idが数字かどうかチェックする
-        if(!ctype_digit($id)){
+        if (!ctype_digit($id)) {
             //不正な場合はエラーメッセつけてマイページへ
-            return redirect('/mypage')->with('err_message','Invalid operation');
+            return redirect('/mypage')->with('err_message', 'Invalid operation');
         }
 
         //ユーザ情報を取得
@@ -120,10 +124,64 @@ class RoutinesController extends Controller
         return view('routines.prepare', ['user' => $user, 'routine' => $routine]);
     }
 
+    //実行開始
+    public function start(Request $request, $id)
+    {
+       // log::debug('実行開始押したよ！');
+       // log::debug('リクエストの中身:' . $request[0]);
+       // log::debug('id番号:' . $id);
+        //idが数字かどうかチェックする
+        if (!ctype_digit($id)) {
+            //不正な場合はエラーメッセつけてマイページへ
+            return redirect('/mypage')->with('err_message', 'Invalid operation');
+        }
+        //渡ってきたデータの加工
+        for($i=0; $i<=9; $i++){
+            if($request[$i]){
+                $request['task'.$i] = $request[$i];
+            }else{
+                continue;
+            }
+        }
+
+        //モデルのインスタンス作成
+        $history = new App\History;
+
+        //今回変更するリストのタイトルを取得して
+        //requestOrderに詰める
+        $routine = Auth::user()->routines->find($id);
+        $request['title'] = $routine['title'];
+
+        //開始時刻は現在時刻を詰める
+        $request['started_at'] = Carbon::now();
+
+        //全て入ってるか確認
+        //log::debug($request);
+
+        //historiesの方へ追加
+        Auth::user()->histories()->save($history->fill($request->all()));
+        Log::debug('履歴データ追加完了');
+
+        //今保存した履歴データを取得
+        $latestHistory = Auth::user()->histories()->latest('started_at')->first();
+        log::debug($latestHistory);
+
+        //最新履歴データのidを返す
+        return $data = $latestHistory['id'];
+
+        //routinesテーブル更新の際に使う
+       // $routine->fill($request->all())->save();
+       // Log::debug('更新出来たよ！');
+
+
+    }
+
     //実行中画面表示
     public function proceed($id)
     {
-        return view('routines.proceed');
+        //表示するリストを取得
+        $history = Auth::user()->histories->find($id);
+        return view('routines.proceed',['history' => $history]);
     }
 
     //完了画面表示

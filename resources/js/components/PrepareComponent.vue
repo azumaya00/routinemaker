@@ -33,10 +33,8 @@
                         value="戻る" onclick="history.back();" type="button"
                         class="c-btn c-btn__square--small c-btn__square--small--back c-btn--base"
                     />
-                    <a href="#"
+                    <input value="始める！" v-on:click="startProcess" type="button"
                        class="c-btn c-btn__square--small c-btn--accent">
-                        始める!
-                    </a>
                 </div>
             </div>
         </div>
@@ -54,7 +52,8 @@
         },
         data: function () {
             return {
-                tasks: []
+                tasks: [],
+                historyId: 1
             }
         },
         props: {
@@ -77,6 +76,30 @@
             //リストの順番をランダムに変える
             doShuffle: function () {
                 this.tasks = _.shuffle(this.tasks)
+            },
+
+            //リスト実行開始
+            startProcess: function(){
+                //idとタスク順を変数につめる
+                const data = this.tasks
+                const id = this.routine.id
+
+                //axios内でthisを使える様にする
+                let self = this;
+                //axiosでDB保存
+                axios.post('/routines/'+ id +'/start', data)
+                    .then(function (response) {
+                        self.historyId = response.data
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+                //保存後実行中ページへ遷移
+                //データ反映を待つので500ms後
+                setTimeout(function(){
+                    window.location.href = '/routines/' + self.historyId + '/proceed'
+                }, 500)
+
             }
         }
     }

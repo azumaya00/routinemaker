@@ -113,7 +113,7 @@ class RoutinesController extends Controller
         //idが数字かどうかチェックする
         if (!ctype_digit($id)) {
             //不正な場合はエラーメッセつけてマイページへ
-            return redirect('/mypage')->with('err_message', 'Invalid operation');
+            return redirect('/mypage')->with('err_message', __(('Invalid operation')));
         }
 
         //ユーザ情報を取得
@@ -133,7 +133,7 @@ class RoutinesController extends Controller
         //idが数字かどうかチェックする
         if (!ctype_digit($id)) {
             //不正な場合はエラーメッセつけてマイページへ
-            return redirect('/mypage')->with('err_message', 'Invalid operation');
+            return redirect('/mypage')->with('err_message', __(('Invalid operation')));
         }
         //渡ってきたデータの加工
         for($i=0; $i<=9; $i++){
@@ -179,9 +179,52 @@ class RoutinesController extends Controller
     //実行中画面表示
     public function proceed($id)
     {
+        //idが数字かどうかチェックする
+        if (!ctype_digit($id)) {
+            //不正な場合はエラーメッセつけてマイページへ
+            return redirect('/mypage')->with('err_message', __(('Invalid operation')));
+        }
+
         //表示するリストを取得
         $history = Auth::user()->histories->find($id);
-        return view('routines.proceed',['history' => $history]);
+
+        //既に終了している履歴idを手動で入れた場合
+        //エラーメッセを付けてマイページへ
+        if(!empty($history['finished_at'])){
+            return redirect('/mypage')->with('err_message', __(('Invalid operation')));
+        }else{
+            //問題無ければビューを表示
+            return view('routines.proceed',['history' => $history]);
+        }
+    }
+
+    //リスト実行完了
+    public function finish(Request $request, $id){
+        //今回変更するリストを取得
+        $history = Auth::user()->histories->find($id);
+
+        //$requestに終了時刻と完了フラグをつめる
+        $request['finished_at'] = Carbon::now();
+        $request['completion'] = true;
+
+        //更新
+        $history->fill($request->all())->save();
+        Log::debug('更新出来たよ！');
+    }
+
+    //リスト中断
+    public function suspend(Request $request, $id){
+        //今回変更するリストを取得
+        $history = Auth::user()->histories->find($id);
+
+        //$requestに終了時刻と未完了フラグをつめる
+        $request['finished_at'] = Carbon::now();
+        $request['completion'] = false;
+
+        //更新
+        $history->fill($request->all())->save();
+        Log::debug('更新出来たよ！');
+
     }
 
     //完了画面表示

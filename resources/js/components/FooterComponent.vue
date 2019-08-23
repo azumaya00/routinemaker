@@ -5,12 +5,12 @@
         </div>
         <div class="info">
             <ul class="footer-menu">
-                <li class="footer-menu__list"><a href="/about">このアプリについて </a></li>
+                <li class="footer-menu__list"><a href="/term">利用規約 </a></li>
                 <li class="footer-menu__list">|</li>
                 <li class="footer-menu__list"><a href="/policy">プライバシーポリシー</a></li>
                 <li class="footer-menu__list">|</li>
                 <li class="footer-menu__list">
-                    <a href="../contacts">お問い合わせ</a>
+                    <a href="../contact">お問い合わせ</a>
                 </li>
             </ul>
         </div>

@@ -16,7 +16,7 @@ class HistoriesController extends Controller
         $user = Auth::user();
         //履歴を取得
         //latestで新しい順に
-        $histories = Auth::user()->histories()->latest('finished_at')->paginate(5);
+        $histories = Auth::user()->histories()->latest('started_at')->paginate(5);
         //ビュー表示
         return view('histories.show', ['user' => $user, 'histories' => $histories]);
     }

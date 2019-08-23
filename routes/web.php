@@ -38,12 +38,50 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/routines/{id}', 'RoutinesController@update')->name('routines.update'); //リストアップデート
     Route::post('/routines/{id}/delete', 'RoutinesController@delete')->name('routines.delete'); //リスト削除
     Route::post('/routines/{id}/start', 'RoutinesController@start')->name('routines.start'); //リスト実行開始
-    Route::post('/routines/{id}/finish', 'RoutinesController@finish')->name('routines.finish'); //リスト完了
+    Route::post('/routines/{id}/finish', 'RoutinesController@finish')->name('routines.finish'); //リスト実行完了
     Route::post('/routines/{id}/suspend', 'RoutinesController@suspend')->name('routines.suspend'); //リスト中断
 });
 
 //ログイン不要
-Route::get('/contacts', 'ContactsController@index')->name('contacts'); //お問い合わせ表示
+
+Route::get('/login/{provider}', 'Auth\LoginController@redirectToProvider'); //ソーシャルログイン
+Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCallback'); //ソーシャルログインのcallback
+
+//お問い合わせ表示
+Route::get('/contact',function(){
+    if(Auth::check()){
+        //ログインしている場合ユーザ情報を取得
+        $user = Auth::user();
+    }else{
+        //未ログインの場合は空の連想配列
+        $user = json_encode([""=>[]]);
+    }
+    return view('contact', ['user' => $user]);
+});
+//利用規約表示
+Route::get('/term',function(){
+    if(Auth::check()){
+        //ログインしている場合ユーザ情報を取得
+        $user = Auth::user();
+    }else{
+        //未ログインの場合は空の連想配列
+        $user = json_encode([""=>[]]);
+    }
+    return view('term', ['user' => $user]);
+});
+//プライバシーポリシー表示
+Route::get('/policy',function(){
+    if(Auth::check()){
+        //ログインしている場合ユーザ情報を取得
+        $user = Auth::user();
+    }else{
+        //未ログインの場合は空の連想配列
+        $user = json_encode([""=>[]]);
+    }
+    return view('policy', ['user' => $user]);
+});
+
+Route::post('contact/sent', 'ContactsController@sent')->name('contact.sent'); //問い合わせ送信
 
 Auth::routes();
 

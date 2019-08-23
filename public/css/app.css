@@ -599,6 +599,10 @@ c-button
   transition: all 0.3s ease-out;
 }
 
+.c-btn:focus {
+  outline: 0;
+}
+
 .c-btn__group {
   display: flex;
   justify-content: space-between;
@@ -959,6 +963,8 @@ p-hero
   font-size: 80px;
   font-weight: bold;
   color: white;
+  -webkit-animation: tremble 2s infinite;
+          animation: tremble 2s infinite;
 }
 
 @media screen and (max-width: 768px) {
@@ -1006,6 +1012,154 @@ p-hero
     min-width: 100px;
     box-sizing: border-box;
     flex-direction: column;
+  }
+}
+
+@-webkit-keyframes tremble {
+  0% {
+    transform: translate(0px, 0px) rotateZ(0deg);
+  }
+
+  68% {
+    transform: translate(0px, 0px) rotateZ(0deg);
+  }
+
+  70% {
+    transform: translate(2px, 2px) rotateZ(1deg);
+  }
+
+  72% {
+    transform: translate(0px, 2px) rotateZ(0deg);
+  }
+
+  74% {
+    transform: translate(2px, 0px) rotateZ(-1deg);
+  }
+
+  76% {
+    transform: translate(0px, 0px) rotateZ(0deg);
+  }
+
+  78% {
+    transform: translate(2px, 2px) rotateZ(1deg);
+  }
+
+  80% {
+    transform: translate(0px, 2px) rotateZ(0deg);
+  }
+
+  82% {
+    transform: translate(2px, 0px) rotateZ(-1deg);
+  }
+
+  84% {
+    transform: translate(0px, 0px) rotateZ(0deg);
+  }
+
+  86% {
+    transform: translate(2px, 2px) rotateZ(1deg);
+  }
+
+  88% {
+    transform: translate(0px, 2px) rotateZ(0deg);
+  }
+
+  90% {
+    transform: translate(2px, 0px) rotateZ(-1deg);
+  }
+
+  92% {
+    transform: translate(0px, 0px) rotateZ(0deg);
+  }
+
+  94% {
+    transform: translate(2px, 2px) rotateZ(1deg);
+  }
+
+  96% {
+    transform: translate(0px, 2px) rotateZ(0deg);
+  }
+
+  98% {
+    transform: translate(2px, 0px) rotateZ(-1deg);
+  }
+
+  100% {
+    transform: translate(0px, 0px) rotateZ(0deg);
+  }
+}
+
+@keyframes tremble {
+  0% {
+    transform: translate(0px, 0px) rotateZ(0deg);
+  }
+
+  68% {
+    transform: translate(0px, 0px) rotateZ(0deg);
+  }
+
+  70% {
+    transform: translate(2px, 2px) rotateZ(1deg);
+  }
+
+  72% {
+    transform: translate(0px, 2px) rotateZ(0deg);
+  }
+
+  74% {
+    transform: translate(2px, 0px) rotateZ(-1deg);
+  }
+
+  76% {
+    transform: translate(0px, 0px) rotateZ(0deg);
+  }
+
+  78% {
+    transform: translate(2px, 2px) rotateZ(1deg);
+  }
+
+  80% {
+    transform: translate(0px, 2px) rotateZ(0deg);
+  }
+
+  82% {
+    transform: translate(2px, 0px) rotateZ(-1deg);
+  }
+
+  84% {
+    transform: translate(0px, 0px) rotateZ(0deg);
+  }
+
+  86% {
+    transform: translate(2px, 2px) rotateZ(1deg);
+  }
+
+  88% {
+    transform: translate(0px, 2px) rotateZ(0deg);
+  }
+
+  90% {
+    transform: translate(2px, 0px) rotateZ(-1deg);
+  }
+
+  92% {
+    transform: translate(0px, 0px) rotateZ(0deg);
+  }
+
+  94% {
+    transform: translate(2px, 2px) rotateZ(1deg);
+  }
+
+  96% {
+    transform: translate(0px, 2px) rotateZ(0deg);
+  }
+
+  98% {
+    transform: translate(2px, 0px) rotateZ(-1deg);
+  }
+
+  100% {
+    transform: translate(0px, 0px) rotateZ(0deg);
   }
 }
 
@@ -1371,6 +1525,7 @@ p-procedure
 
 .p-procedure__text {
   margin: 15px 0;
+  position: relative;
   font-size: 2rem;
   color: #8B98A2;
   line-height: 2;
@@ -1387,7 +1542,7 @@ p-procedure
 
 .p-procedure__text--center {
   text-align: center;
-  font-size: 60px;
+  font-size: 40px;
   color: white;
 }
 
@@ -1406,6 +1561,16 @@ p-procedure
   background: #E7EAEC;
   color: #8B98A2;
   border: 1px solid #C9D0D6;
+}
+
+.task-enter-active,
+.task-leave-active {
+  transition: all 0.3s;
+}
+
+.task-enter,
+.task-leave-to {
+  opacity: 0;
 }
 
 /* ---------------------------------
@@ -1627,5 +1792,71 @@ p-pagination
 
 .page-item.active {
   background: #FFCCBA;
+}
+
+/* ---------------------------------
+p-policy
+--------------------------------- */
+
+.p-policy__container {
+  width: 80%;
+  margin: 60px auto;
+  padding: 30px;
+  box-sizing: border-box;
+  color: #272B2D;
+}
+
+@media screen and (max-width: 768px) {
+  .p-policy__container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 25px 15px;
+    background: white;
+  }
+}
+
+.p-policy__title {
+  text-align: center;
+  font-size: 3.2rem;
+  color: #272B2D;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.p-policy__title--sub {
+  margin: 30px 0 15px;
+  font-size: 2.4rem;
+  color: #272B2D;
+  font-weight: normal;
+}
+
+.p-policy__text {
+  font-size: 1.6rem;
+  line-height: 1.8;
+}
+
+.p-policy__text--right {
+  text-align: right;
+}
+
+.p-policy__text a {
+  color: #272B2D;
+}
+
+.p-policy__list {
+  counter-reset: my-counter;
+  margin-top: 15px;
+  padding-left: 10px;
+  font-size: 1.6rem;
+}
+
+.p-policy__list__item {
+  margin-bottom: 10px;
+  line-height: 1.8;
+}
+
+.p-policy__list__item::before {
+  content: counter(my-counter) ".";
+  counter-increment: my-counter;
 }
 

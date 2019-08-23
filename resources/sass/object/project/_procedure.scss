@@ -1,51 +1,68 @@
 /* ---------------------------------
 p-procedure
 --------------------------------- */
-.p-procedure{
-    &__container{
+.p-procedure {
+    &__container {
         width: 50%;
         margin: $space_6l auto;
         padding: $space_3l;
         box-sizing: border-box;
-        @include mq(){
+        @include mq() {
             width: 100%;
             margin: $space_2l auto;
             padding: $space_m;
         }
     }
-    &__title{
+
+    &__title {
         margin-bottom: $space_l;
     }
-    &__text{
+
+    &__text {
         margin: $space_l 0;
+        position: relative;
         font-size: $font-size_xl;
         color: $color_dark075;
         line-height: 2.0;
-        &__container{
+
+        &__container {
             width: 100%;
             margin-bottom: $space_8l;
         }
-        &--left{
+
+        &--left {
             text-align: left;
         }
-        &--center{
+
+        &--center {
             text-align: center;
-            font-size: 60px;
+            font-size: 40px;
             color: $color_base;
         }
-        &--right{
+
+        &--right {
             text-align: right;
         }
     }
-    &__btn__group{
+
+    &__btn__group {
         margin: $space_6l;
         text-align: center;
     }
-    &__suspension{
+
+    &__suspension {
         padding: $space_s $space_m;
         font-size: $font-size_s;
         background: $color_dark025;
         color: $color_dark075;
         border: 1px solid $color_dark050;
     }
+}
+
+//アニメーション
+.task-enter-active, .task-leave-active {
+    transition: all .3s;
+}
+.task-enter, .task-leave-to {
+    opacity: 0;
 }

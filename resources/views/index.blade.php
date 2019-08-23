@@ -20,7 +20,7 @@
                        class="c-btn c-btn__square--flexible c-btn--accent p-hero__btn"
                     >新規会員登録</a
                     >
-                    <a href="#"
+                    <a href="/login/twitter"
                        class="c-btn c-btn__square--flexible c-btn--twitter p-hero__btn">
                         <i class="fab fa-twitter"></i> Twitterで登録/ログイン</a
                     >

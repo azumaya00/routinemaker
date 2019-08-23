@@ -27,7 +27,7 @@
 
 </head>
 <body>
-<div id="app" class="wrapper--main">
+<div id="app" class="wrapper--main" v-cloak>
 
 
     <!-- content -->

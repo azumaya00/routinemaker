@@ -21,6 +21,7 @@ p-hero
         font-size: 80px;
         font-weight: bold;
         color: $color_base;
+        animation: tremble 2s infinite;
         @include mq(){
             @include fontsizeVw(80)
         }
@@ -57,4 +58,26 @@ p-hero
             flex-direction: column;
         }
     }
+}
+
+//アニメーション
+@keyframes tremble {
+    0% {transform: translate(0px, 0px) rotateZ(0deg)}
+    68% {transform: translate(0px, 0px) rotateZ(0deg)}
+    70% {transform: translate(2px, 2px) rotateZ(1deg)}
+    72% {transform: translate(0px, 2px) rotateZ(0deg)}
+    74% {transform: translate(2px, 0px) rotateZ(-1deg)}
+    76% {transform: translate(0px, 0px) rotateZ(0deg)}
+    78% {transform: translate(2px, 2px) rotateZ(1deg)}
+    80% {transform: translate(0px, 2px) rotateZ(0deg)}
+    82% {transform: translate(2px, 0px) rotateZ(-1deg)}
+    84% {transform: translate(0px, 0px) rotateZ(0deg)}
+    86% {transform: translate(2px, 2px) rotateZ(1deg)}
+    88% {transform: translate(0px, 2px) rotateZ(0deg)}
+    90% {transform: translate(2px, 0px) rotateZ(-1deg)}
+    92% {transform: translate(0px, 0px) rotateZ(0deg)}
+    94% {transform: translate(2px, 2px) rotateZ(1deg)}
+    96% {transform: translate(0px, 2px) rotateZ(0deg)}
+    98% {transform: translate(2px, 0px) rotateZ(-1deg)}
+    100% {transform: translate(0px, 0px) rotateZ(0deg)}
 }

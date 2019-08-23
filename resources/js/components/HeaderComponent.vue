@@ -81,13 +81,13 @@
             </div>
             <ul class="p-header__sp__menu p-header__sp__menu--right">
                 <li class="p-header__sp__menu__list">
-                    <a href="/about">このアプリについて</a>
+                    <a href="/term">利用規約</a>
                 </li>
                 <li class="p-header__sp__menu__list">
                     <a href="/policy">プライバシーポリシー</a>
                 </li>
                 <li class="p-header__sp__menu__list">
-                    <a href="/contacts">お問い合わせ</a>
+                    <a href="/contact">お問い合わせ</a>
                 </li>
             </ul>
         </div>

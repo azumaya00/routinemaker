@@ -3,7 +3,9 @@
 @section('title','Sign up')
 
 @section('content')
-    <header-component v-bind:authcheck="false" v-bind:logout="'{{route('logout')}}'" v-bind:user="undefined"></header-component>
+    <header-component v-bind:authcheck="false"
+                      v-bind:logout="'{{route('logout')}}'"
+                      v-bind:user="undefined"></header-component>
 
     <main class="l-main l-main--base">
         <div class="l-main__inner">
@@ -58,7 +60,7 @@
                                    name="password"
                                    placeholder="{{ __('Password') }}"
                                    class="@error('password') invalid @enderror"
-                                   name="password" required
+                                   required
                                    autocomplete="new-password"/>
                         </label>
 
@@ -75,7 +77,7 @@
                         <input
                             type="submit"
                             class="c-btn c-btn__square--large c-btn--accent"
-                            value=" {{ __('Register') }}"
+                            value="{{ __('Register') }}"
                         />
                     </form>
 
@@ -84,7 +86,7 @@
                     </div>
 
                     <!-- Twitterログインボタン -->
-                    <a href="#"
+                    <a href="/login/twitter"
                        class="c-btn c-btn__square--large c-btn--twitter">
                         <i class="fab fa-twitter"></i>
                         Twitterで登録/ログイン</a

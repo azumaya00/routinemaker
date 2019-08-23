@@ -2212,16 +2212,77 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ProceedComponent",
   data: function data() {
-    return {};
+    return {
+      tasks: [],
+      currentTaskId: 1
+    };
   },
   props: {
     history: Object
   },
+  created: function created() {
+    //historiesテーブルからタスクのみの配列を作る
+    for (var i = 0; i <= 9; i++) {
+      var order = 'task' + i;
+
+      if (this.history[order]) {
+        this.tasks.splice(i, 0, this.history[order]);
+      } else {
+        //タスクがnullの時は配列に入れない
+        continue;
+      }
+    }
+  },
   computed: {},
-  methods: {}
+  methods: {
+    //終わったボタンの処理
+    goNext: function goNext() {
+      if (this.tasks[this.currentTaskId]) {
+        //次のリストの中身があれば
+        //次のリストを表示する
+        this.currentTaskId++;
+      } else {
+        //リストの中身がnullになったら
+        //完了の行程へ
+        //idを変数に詰める
+        var id = this.history.id; //axiosでリスト完了処理
+
+        axios.post('/routines/' + id + '/finish').then(function (response) {
+          console.log(response);
+        })["catch"](function (error) {
+          console.log(error);
+        }); //保存後完了ページへ遷移
+
+        window.location.href = '/routines/complete';
+      }
+    },
+    //中断ボタンの処理
+    suspendRoutine: function suspendRoutine() {
+      if (window.confirm('本当に中断しますか？')) {
+        //idを変数に詰める
+        var id = this.history.id; //axiosでリスト完了処理
+
+        axios.post('/routines/' + id + '/suspend').then(function (response) {
+          console.log(response);
+        })["catch"](function (error) {
+          console.log(error);
+        }); //保存後マイページへ遷移
+
+        window.location.href = '/mypage';
+      } else {
+        return;
+      }
+    }
+  }
 });
 
 /***/ }),
@@ -35574,9 +35635,7 @@ var staticRenderFns = [
       _c("div", { staticClass: "info" }, [
         _c("ul", { staticClass: "footer-menu" }, [
           _c("li", { staticClass: "footer-menu__list" }, [
-            _c("a", { attrs: { href: "/about" } }, [
-              _vm._v("このアプリについて ")
-            ])
+            _c("a", { attrs: { href: "/term" } }, [_vm._v("利用規約 ")])
           ]),
           _vm._v(" "),
           _c("li", { staticClass: "footer-menu__list" }, [_vm._v("|")]),
@@ -35590,9 +35649,7 @@ var staticRenderFns = [
           _c("li", { staticClass: "footer-menu__list" }, [_vm._v("|")]),
           _vm._v(" "),
           _c("li", { staticClass: "footer-menu__list" }, [
-            _c("a", { attrs: { href: "../contacts" } }, [
-              _vm._v("お問い合わせ")
-            ])
+            _c("a", { attrs: { href: "../contact" } }, [_vm._v("お問い合わせ")])
           ])
         ])
       ])
@@ -35878,7 +35935,7 @@ var staticRenderFns = [
       { staticClass: "p-header__sp__menu p-header__sp__menu--right" },
       [
         _c("li", { staticClass: "p-header__sp__menu__list" }, [
-          _c("a", { attrs: { href: "/about" } }, [_vm._v("このアプリについて")])
+          _c("a", { attrs: { href: "/term" } }, [_vm._v("利用規約")])
         ]),
         _vm._v(" "),
         _c("li", { staticClass: "p-header__sp__menu__list" }, [
@@ -35888,7 +35945,7 @@ var staticRenderFns = [
         ]),
         _vm._v(" "),
         _c("li", { staticClass: "p-header__sp__menu__list" }, [
-          _c("a", { attrs: { href: "/contacts" } }, [_vm._v("お問い合わせ")])
+          _c("a", { attrs: { href: "/contact" } }, [_vm._v("お問い合わせ")])
         ])
       ]
     )
@@ -36028,59 +36085,68 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("main", { staticClass: "l-main l-main--main" }, [
-      _c("div", { staticClass: "l-main__inner" }, [
-        _c("div", { staticClass: "p-procedure__container" }, [
-          _c("div", { staticClass: "p-procedure__text__container" }, [
+  return _c("main", { staticClass: "l-main l-main--main" }, [
+    _c("div", { staticClass: "l-main__inner" }, [
+      _c("div", { staticClass: "p-procedure__container" }, [
+        _c(
+          "div",
+          { staticClass: "p-procedure__text__container" },
+          [
             _c(
               "p",
               { staticClass: "p-procedure__text p-procedure__text--left" },
               [_vm._v("今は")]
             ),
             _vm._v(" "),
-            _c(
-              "p",
-              { staticClass: "p-procedure__text p-procedure__text--center" },
-              [_vm._v("\n                    数学の問題集\n                ")]
-            ),
+            _c("transition", { attrs: { name: "task", mode: "out-in" } }, [
+              _c(
+                "p",
+                {
+                  key: _vm.currentTaskId,
+                  staticClass: "p-procedure__text p-procedure__text--center"
+                },
+                [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.tasks[_vm.currentTaskId - 1]) +
+                      "\n                "
+                  )
+                ]
+              )
+            ]),
             _vm._v(" "),
             _c(
               "p",
               { staticClass: "p-procedure__text p-procedure__text--right" },
               [_vm._v("\n                    をする時間です")]
             )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "p-procedure__btn__group" }, [
-            _c(
-              "a",
-              { staticClass: "c-btn c-btn__round", attrs: { href: "#" } },
-              [_vm._v("終わった！")]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "p-procedure__btn__group" }, [
-            _c(
-              "a",
-              {
-                staticClass: "c-btn p-procedure__suspension",
-                attrs: { href: "#" }
-              },
-              [_vm._v("途中でやめる")]
-            )
-          ])
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "p-procedure__btn__group" }, [
+          _c(
+            "button",
+            { staticClass: "c-btn c-btn__round", on: { click: _vm.goNext } },
+            [_vm._v("\n                    終わった！\n                ")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "p-procedure__btn__group" }, [
+          _c(
+            "button",
+            {
+              staticClass: "c-btn p-procedure__suspension",
+              on: { click: _vm.suspendRoutine }
+            },
+            [_vm._v("途中でやめる\n                ")]
+          )
         ])
       ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 

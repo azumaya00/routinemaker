@@ -14,7 +14,8 @@
                 <!-- スマホ用メニューここから -->
                 <div class="p-history__sp__menu">
                     <div class="p-history__sp__menu--left">
-                        <a href="mypage" class="p-history__sp__link">{{__('My List')}}</a>
+                        <a href="mypage"
+                           class="p-history__sp__link">{{__('My List')}}</a>
                     </div>
                     <div class="p-history__sp__menu--right">
                         <p class="p-history__sp__link">{{__('History')}}</p>
@@ -29,52 +30,59 @@
 
                     @foreach($histories as $history)
 
-                    <div class="p-history__head">
-                        <div class="p-history__head--left">
+                        <div class="p-history__head">
+                            <div class="p-history__head--left">
+                                <ul class="p-history__list">
+                                    <li class="p-history__list__item">
+                                        {{ date('Y年m月d日', strtotime($history -> started_at)) }}
+                                    </li>
+                                    <li class="p-history__list__item">
+                                        {{ $history -> title }}
+                                    </li>
+                                </ul>
+                            </div>
+                            <div
+                                class="p-history__head--right @if($history -> completion) completed @else incomplete @endif"></div>
+                        </div>
+                        <input
+                            type="checkbox"
+                            id="{{ $history ->id }}"
+                            name=""
+                            class="c-accordion__tab"
+                        />
+                        <label for="{{ $history ->id }}"
+                               class="c-accordion__label">詳しく見る</label>
+                        <div class="c-accordion__content">
                             <ul class="p-history__list">
                                 <li class="p-history__list__item">
-                                    {{ date('Y年m月d日', strtotime($history -> started_at)) }}
+                                    かかった時間:
+                                    @if($history -> finished_at)
+                                    {{date_diff(new DateTime($history -> started_at), new DateTime($history -> finished_at))->format('%h時間%i分%s秒')}}
+                                        @else
+                                    計測不能
+                                        @endif
                                 </li>
                                 <li class="p-history__list__item">
-                                    {{ $history -> title }}
+                                    実行順:
+                                    <ol class="p-history__list--sub">
+                                        @for($i=1; $i<=10; $i++)
+                                            @php
+                                                $task = 'task'.($i-1);
+                                            @endphp
+                                            @if(!($history -> $task))
+                                                @continue
+                                            @endif
+                                            <li class="p-history__list__item--sub">
+                                                {{ $history -> $task }}
+                                            </li>
+                                        @endfor
+                                    </ol>
                                 </li>
                             </ul>
                         </div>
-                        <div class="p-history__head--right @if($history -> completion) completed @else incomplete @endif"></div>
-                    </div>
-                    <input
-                        type="checkbox"
-                        id="{{ $history ->id }}"
-                        name=""
-                        class="c-accordion__tab"
-                    />
-                    <label for="{{ $history ->id }}" class="c-accordion__label">詳しく見る</label>
-                    <div class="c-accordion__content">
-                        <ul class="p-history__list">
-                            <li class="p-history__list__item">
-                                かかった時間: {{date('G時間I分s秒', strtotime($history -> finished_at) - strtotime($history -> started_at))}}
-                            </li>
-                            <li class="p-history__list__item">
-                                実行順:
-                                <ol class="p-history__list--sub">
-                                    @for($i=1; $i<=10; $i++)
-                                        @php
-                                            $task = 'task'.($i-1);
-                                        @endphp
-                                        @if(!($history -> $task))
-                                            @continue
-                                        @endif
-                                        <li class="p-history__list__item--sub">
-                                        {{ $history -> $task }}
-                                    </li>
-                                    @endfor
-                                </ol>
-                            </li>
-                        </ul>
-                    </div>
 
-                    @endforeach
-                    <!-- accordion component end -->
+                @endforeach
+                <!-- accordion component end -->
                 </div>
                 <!-- アコーディオンここまで -->
 

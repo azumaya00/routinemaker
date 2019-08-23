@@ -1,0 +1,56 @@
+/* ---------------------------------
+p-policy
+--------------------------------- */
+.p-policy{
+    &__container{
+        width: 80%;
+        margin: $space_6l auto;
+        padding: $space_3l;
+        box-sizing: border-box;
+        color: $font-color_default;
+        @include mq(){
+            width: 100%;
+            margin: 0 auto;
+            padding: $space_2l $space_l;
+            background: $color_base;
+        }
+    }
+    &__title{
+        text-align: center;
+        font-size: $font_size_4l;
+        color: $font-color_default;
+        font-weight: bold;
+        margin-bottom: $space_3l;
+        &--sub{
+            margin: $space_3l 0 $space_l;
+            font-size: $font_size_2l;
+            color: $font-color_default;
+            font-weight: normal;
+        }
+    }
+    &__text{
+        font-size: $font_size_m;
+        line-height: 1.8;
+        &--right{
+            text-align: right;
+        }
+        a{
+            color: $font-color_default;
+        }
+
+    }
+    &__list{
+        counter-reset: my-counter;
+        margin-top: $space_l;
+        padding-left: $space_m;
+        font-size: $font_size_m;
+        &__item{
+            margin-bottom: $space_m;
+            line-height: 1.8;
+            &::before{
+                content: counter(my-counter)'.';
+                counter-increment: my-counter;
+            }
+        }
+    }
+}

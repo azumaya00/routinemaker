@@ -70,7 +70,7 @@
 
 
                     <!-- Twitterログインボタン -->
-                    <a href="#"
+                    <a href="/login/twitter"
                        class="c-btn c-btn__square--large c-btn--twitter">
                         <i class="fab fa-twitter"></i>
                         Twitterで登録/ログイン</a

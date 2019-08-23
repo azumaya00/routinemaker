@@ -137,6 +137,29 @@ table {
   border-spacing: 0;
 }
 
+/* iOSでのデフォルトスタイルをリセット */
+
+input[type=submit],
+input[type=button] {
+  border-radius: 0;
+  -webkit-box-sizing: content-box;
+  -webkit-appearance: button;
+  -moz-appearance: button;
+       appearance: button;
+  border: none;
+  box-sizing: border-box;
+}
+
+input[type=submit]::-webkit-search-decoration,
+input[type=button]::-webkit-search-decoration {
+  display: none;
+}
+
+input[type=submit]::focus,
+input[type=button]::focus {
+  outline-offset: -2px;
+}
+
 /* ---------------------------------
 variables
 --------------------------------- */
@@ -657,7 +680,7 @@ c-button
   background: white;
   color: #B8DDF7;
   line-height: 150px;
-  font-size: 2.4rem;
+  font-size: 1.8rem;
   font-weight: bold;
 }
 
@@ -1683,7 +1706,7 @@ p-header__sp
     background: rgba(139, 152, 162, 0.85);
     position: absolute;
     top: 0px;
-    opacity: 1;
+    opacity: 0;
     z-index: 2;
     transition: all 0.5s ease-in-out;
   }

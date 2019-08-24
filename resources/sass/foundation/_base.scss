@@ -20,6 +20,9 @@ html {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    @include mq(){
+        max-width: 100vw;
+    }
 }
 
 p,

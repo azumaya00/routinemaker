@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
 
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-146433033-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-146433033-1');
+    </script>
+
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -24,6 +35,16 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- OGP設定 start -->
+    <meta property="og:title" content="RoutineMaker">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://routinemaker.yuruknowledge-labo.com/">
+    <meta property="og:image" content="{{ asset('images/ogp.jpg') }}">
+    <meta property="og:site_name" content="Yuruknowledge Labo">
+    <meta property="og:description" content="やることが多くてパニックになる！すぐ気が散ってやることを放り出す！そんな子供のためのタスク実行補助アプリです">
+    <meta name="twitter:card" content="summary_large_image">
+    <!-- OGP設定 end -->
 
 </head>
 <body>

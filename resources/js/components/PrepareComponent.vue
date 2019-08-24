@@ -95,10 +95,10 @@
                         console.log(error);
                     });
                 //保存後実行中ページへ遷移
-                //データ反映を待つので500ms後
+                //データ反映を待つので1000ms後
                 setTimeout(function(){
                     window.location.href = '/routines/' + self.historyId + '/proceed'
-                }, 500)
+                }, 1000)
 
             }
         }

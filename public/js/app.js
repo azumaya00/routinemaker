@@ -2022,6 +2022,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "HeaderComponent",
   data: function data() {
@@ -2046,16 +2053,27 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         console.log(error);
       }); //ログアウト後トップページへ遷移
+      //データ反映を待つので1000ms後
 
-      window.location.href = '/';
+      setTimeout(function () {
+        window.location.href = '/';
+      }, 1000);
     },
     //スマホ用USERメニュー開け閉め
     toggleLeftMenu: function toggleLeftMenu() {
       this.isActiveLeft = !this.isActiveLeft;
+
+      if (this.isActiveRight) {
+        this.isActiveRight = !this.isActiveRight;
+      }
     },
     //スマホ用INFOメニュー開け閉め
     toggleRightMenu: function toggleRightMenu() {
       this.isActiveRight = !this.isActiveRight;
+
+      if (this.isActiveLeft) {
+        this.isActiveLeft = !this.isActiveLeft;
+      }
     }
   }
 });
@@ -2164,11 +2182,11 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         console.log(error);
       }); //保存後実行中ページへ遷移
-      //データ反映を待つので500ms後
+      //データ反映を待つので1000ms後
 
       setTimeout(function () {
         window.location.href = '/routines/' + self.historyId + '/proceed';
-      }, 500);
+      }, 1000);
     }
   }
 });
@@ -2184,6 +2202,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -2261,8 +2280,11 @@ __webpack_require__.r(__webpack_exports__);
         })["catch"](function (error) {
           console.log(error);
         }); //保存後完了ページへ遷移
+        //データ反映を待つので1000ms後
 
-        window.location.href = '/routines/complete';
+        setTimeout(function () {
+          window.location.href = '/routines/complete';
+        }, 1000);
       }
     },
     //中断ボタンの処理
@@ -2276,8 +2298,11 @@ __webpack_require__.r(__webpack_exports__);
         })["catch"](function (error) {
           console.log(error);
         }); //保存後マイページへ遷移
+        //データ反映を待つので1000ms後
 
-        window.location.href = '/mypage';
+        setTimeout(function () {
+          window.location.href = '/mypage';
+        }, 1000);
       } else {
         return;
       }
@@ -35759,7 +35784,9 @@ var render = function() {
             _c("li", { staticClass: "nav-menu__list" }, [
               _c("p", [
                 _c("i", { staticClass: "fas fa-user nav-menu__icon" }),
-                _vm._v("user: " + _vm._s(this.user["name"]) + " ")
+                _vm._v(
+                  "user:\n                " + _vm._s(this.user["name"]) + " "
+                )
               ])
             ]),
             _vm._v(" "),
@@ -35805,10 +35832,25 @@ var render = function() {
       "div",
       {
         staticClass: "p-header__sp p-header__sp--right",
-        class: { active: _vm.isActiveRight },
-        on: { click: _vm.toggleRightMenu }
+        class: { active: _vm.isActiveRight }
       },
-      [_vm._m(11), _vm._v(" "), _vm._m(12)]
+      [
+        _c(
+          "div",
+          {
+            staticClass:
+              "p-header__sp__icon__container p-header__sp__icon__container--right",
+            on: { click: _vm.toggleRightMenu }
+          },
+          [
+            _c("i", { staticClass: "fas fa-times p-header__sp__icon" }),
+            _vm._v(" "),
+            _c("p", { staticClass: "sp__icon--text" }, [_vm._v("CLOSE")])
+          ]
+        ),
+        _vm._v(" "),
+        _vm._m(11)
+      ]
     )
   ])
 }
@@ -35908,23 +35950,6 @@ var staticRenderFns = [
     return _c("li", { staticClass: "nav-menu__list" }, [
       _c("a", { attrs: { href: "/register" } }, [_vm._v("新規登録")])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "p-header__sp__icon__container p-header__sp__icon__container--right"
-      },
-      [
-        _c("i", { staticClass: "fas fa-times p-header__sp__icon" }),
-        _vm._v(" "),
-        _c("p", { staticClass: "sp__icon--text" }, [_vm._v("CLOSE")])
-      ]
-    )
   },
   function() {
     var _vm = this
@@ -36107,9 +36132,9 @@ var render = function() {
                 },
                 [
                   _vm._v(
-                    "\n                    " +
+                    "\n                        " +
                       _vm._s(_vm.tasks[_vm.currentTaskId - 1]) +
-                      "\n                "
+                      "\n                    "
                   )
                 ]
               )

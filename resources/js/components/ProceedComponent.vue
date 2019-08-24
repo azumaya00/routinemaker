@@ -6,9 +6,10 @@
                 <div class="p-procedure__text__container">
                     <p class="p-procedure__text p-procedure__text--left">今は</p>
                     <transition name="task" mode="out-in">
-                    <p class="p-procedure__text p-procedure__text--center" v-bind:key="currentTaskId">
-                        {{tasks[currentTaskId - 1]}}
-                    </p>
+                        <p class="p-procedure__text p-procedure__text--center"
+                           v-bind:key="currentTaskId">
+                            {{tasks[currentTaskId - 1]}}
+                        </p>
                     </transition>
                     <p class="p-procedure__text p-procedure__text--right">
                         をする時間です</p>
@@ -78,7 +79,10 @@
                             console.log(error);
                         });
                     //保存後完了ページへ遷移
-                    window.location.href = '/routines/complete'
+                    //データ反映を待つので1000ms後
+                    setTimeout(function () {
+                        window.location.href = '/routines/complete'
+                    }, 1000)
                 }
 
             },
@@ -96,7 +100,10 @@
                             console.log(error);
                         });
                     //保存後マイページへ遷移
-                    window.location.href = '/mypage'
+                    //データ反映を待つので1000ms後
+                    setTimeout(function () {
+                        window.location.href = '/mypage'
+                    }, 1000)
                 } else {
                     return
                 }

@@ -6,14 +6,17 @@
         </div>
 
         <!-- SP用userメニューここから -->
-        <div class="p-header__sp p-header__sp--left" v-bind:class="{'active' : isActiveLeft}">
+        <div class="p-header__sp p-header__sp--left"
+             v-bind:class="{'active' : isActiveLeft}">
             <div
-                class="p-header__sp__icon__container p-header__sp__icon__container--left" v-on:click="toggleLeftMenu">
+                class="p-header__sp__icon__container p-header__sp__icon__container--left"
+                v-on:click="toggleLeftMenu">
                 <i class="fas fa-times p-header__sp__icon"></i>
                 <p class="sp__icon--text">CLOSE</p>
             </div>
-            <ul class="p-header__sp__menu p-header__sp__menu--left" v-if="this.authcheck">
-                <li class="p-header__sp__menu__list p-header__sp__menu__list--user" >
+            <ul class="p-header__sp__menu p-header__sp__menu--left"
+                v-if="this.authcheck">
+                <li class="p-header__sp__menu__list p-header__sp__menu__list--user">
                     <p>account</p>
                     <p><span>{{this.user['email']}}</span></p>
                 </li>
@@ -31,7 +34,7 @@
                 </li>
             </ul>
             <ul class="p-header__sp__menu p-header__sp__menu--left" v-else>
-                <li class="p-header__sp__menu__list p-header__sp__menu__list--user" >
+                <li class="p-header__sp__menu__list p-header__sp__menu__list--user">
                     <p>account</p>
                     <p><span>ログインしていません</span></p>
                 </li>
@@ -50,7 +53,9 @@
 
         <nav>
             <ul class="nav-menu" v-if="this.authcheck">
-                <li class="nav-menu__list"><p><i class="fas fa-user nav-menu__icon"></i>user: {{this.user['name']}} </p></li>
+                <li class="nav-menu__list"><p><i
+                    class="fas fa-user nav-menu__icon"></i>user:
+                    {{this.user['name']}} </p></li>
                 <li class="nav-menu__list">||</li>
                 <li class="nav-menu__list"><a href="/mypage">マイページ</a></li>
                 <li class="nav-menu__list">|</li>
@@ -73,9 +78,11 @@
 
 
         <!-- SP用infoメニューここから -->
-        <div class="p-header__sp p-header__sp--right" v-bind:class="{'active' : isActiveRight}" v-on:click="toggleRightMenu">
+        <div class="p-header__sp p-header__sp--right"
+             v-bind:class="{'active' : isActiveRight}">
             <div
-                class="p-header__sp__icon__container p-header__sp__icon__container--right">
+                class="p-header__sp__icon__container p-header__sp__icon__container--right"
+                v-on:click="toggleRightMenu">
                 <i class="fas fa-times p-header__sp__icon"></i>
                 <p class="sp__icon--text">CLOSE</p>
             </div>
@@ -125,15 +132,24 @@
                         console.log(error);
                     });
                 //ログアウト後トップページへ遷移
-                window.location.href = '/'
+                //データ反映を待つので1000ms後
+                setTimeout(function () {
+                    window.location.href = '/'
+                }, 1000)
             },
             //スマホ用USERメニュー開け閉め
-            toggleLeftMenu: function(){
+            toggleLeftMenu: function () {
                 this.isActiveLeft = !this.isActiveLeft
+                if(this.isActiveRight){
+                    this.isActiveRight = !this.isActiveRight
+                }
             },
             //スマホ用INFOメニュー開け閉め
-            toggleRightMenu: function(){
+            toggleRightMenu: function () {
                 this.isActiveRight = !this.isActiveRight
+                if(this.isActiveLeft){
+                    this.isActiveLeft = !this.isActiveLeft
+                }
             }
         }
     }

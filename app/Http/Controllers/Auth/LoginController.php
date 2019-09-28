@@ -32,7 +32,7 @@ class LoginController extends Controller
      */
    // protected $redirectTo = '/mypage';
     protected function redirectTo(){
-        session()->flash('scc_message', __(('Login!')));
+        session()->flash('scc_message', __('Login!'));
         return '/mypage';
     }
 

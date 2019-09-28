@@ -62,3 +62,7 @@ input[type="button"] {
         outline-offset: -2px;
     }
 }
+
+input,textarea {
+    -webkit-appearance: none;
+}

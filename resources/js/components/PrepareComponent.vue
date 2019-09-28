@@ -60,14 +60,14 @@
             routine: Object,
         },
         created: function () {
-            //historiesテーブルからタスクのみの配列を作る
+            //routinesテーブルからタスクのみの配列を作る
             for (let i = 0; i <= 9; i++) {
-                let order = 'task' + i
+                let order = 'task' + i;
                 if (this.routine[order]) {
                     this.tasks.splice(i, 0, this.routine[order])
                 } else {
                     //タスクがnullの時は配列に入れない
-                    continue
+                    continue;
                 }
             }
         },
@@ -75,30 +75,33 @@
         methods: {
             //リストの順番をランダムに変える
             doShuffle: function () {
-                this.tasks = _.shuffle(this.tasks)
+                this.tasks = _.shuffle(this.tasks);
             },
 
             //リスト実行開始
             startProcess: function(){
                 //idとタスク順を変数につめる
-                const data = this.tasks
-                const id = this.routine.id
+                const data = this.tasks;
+                const id = this.routine.id;
 
                 //axios内でthisを使える様にする
                 let self = this;
                 //axiosでDB保存
                 axios.post('/routines/'+ id +'/start', data)
                     .then(function (response) {
-                        self.historyId = response.data
+                        self.historyId = response.data;
+                        //実行ページへ移動
+                        window.location.href = '/routines/' + self.historyId + '/proceed'
                     })
                     .catch(function (error) {
-                        console.log(error);
+                        if (error.response.status === 401 || error.response.status === 500) {
+                            //認証エラーかシステムエラーの時
+                            self.$toasted.global.my_error('エラー(' + error.response.status + '): ' + error.response.data.message);
+                        } else {
+                            console.log(error.response);
+                            self.$toasted.global.my_error('エラーが発生しました');
+                        }
                     });
-                //保存後実行中ページへ遷移
-                //データ反映を待つので1000ms後
-                setTimeout(function(){
-                    window.location.href = '/routines/' + self.historyId + '/proceed'
-                }, 1000)
 
             }
         }

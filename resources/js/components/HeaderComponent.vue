@@ -126,28 +126,30 @@
                 //axios使ってlogoutをpost送信
                 axios.post(this.logout)
                     .then(function (response) {
-                        console.log(response);
+                        window.location.href = '/';
                     })
                     .catch(function (error) {
-                        console.log(error);
+                        if (error.response.status === 401 || error.response.status === 500) {
+                            //認証エラーかシステムエラーの時
+                            self.$toasted.global.my_error('エラー(' + error.response.status + '): ' + error.response.data.message);
+                        } else {
+                            console.log(error.response);
+                            self.$toasted.global.my_error('エラーが発生しました');
+                        }
                     });
-                //ログアウト後トップページへ遷移
-                //データ反映を待つので1000ms後
-                setTimeout(function () {
-                    window.location.href = '/'
-                }, 1000)
+
             },
             //スマホ用USERメニュー開け閉め
             toggleLeftMenu: function () {
                 this.isActiveLeft = !this.isActiveLeft
-                if(this.isActiveRight){
+                if (this.isActiveRight) {
                     this.isActiveRight = !this.isActiveRight
                 }
             },
             //スマホ用INFOメニュー開け閉め
             toggleRightMenu: function () {
                 this.isActiveRight = !this.isActiveRight
-                if(this.isActiveLeft){
+                if (this.isActiveLeft) {
                     this.isActiveLeft = !this.isActiveLeft
                 }
             }

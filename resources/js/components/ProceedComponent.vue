@@ -48,12 +48,12 @@
         created: function () {
             //historiesテーブルからタスクのみの配列を作る
             for (let i = 0; i <= 9; i++) {
-                let order = 'task' + i
+                let order = 'task' + i;
                 if (this.history[order]) {
                     this.tasks.splice(i, 0, this.history[order])
                 } else {
                     //タスクがnullの時は配列に入れない
-                    continue
+                    continue;
                 }
             }
         },

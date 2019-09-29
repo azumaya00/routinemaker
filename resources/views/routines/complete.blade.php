@@ -9,7 +9,7 @@
             <div class="p-complete__container">
                 <h2 class="p-complete__title">全部終わったよ！</h2>
                 <div class="p-complete__img__container">
-                    <img src="{{ asset('images/welldone.png') }}" alt="well done"
+                    <img src="{{ asset('images/winner.jpg') }}" alt="well done"
                          class="p-complete__img">
                 </div>
                 <p class="p-complete__text">

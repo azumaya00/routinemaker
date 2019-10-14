@@ -26,6 +26,7 @@ Vue.component('footer-component', require('./components/FooterComponent.vue').de
 Vue.component('header-component', require('./components/HeaderComponent.vue').default);
 Vue.component('prepare-component', require('./components/PrepareComponent.vue').default);
 Vue.component('proceed-component', require('./components/ProceedComponent.vue').default);
+Vue.component('complete-component', require('./components/CompleteComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

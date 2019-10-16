@@ -28,6 +28,32 @@ p-mypage
         @include mq(){
             display: none;
         }
+        &--create{
+            display: none;
+            @include mq(){
+                display: block;
+                position: fixed;
+                right: 7%;
+                bottom: 140px;
+                font-size: $font-size_l;
+                color: $color_dark100;
+            }
+        }
+        &--arrow{
+            display: none;
+            @include mq(){
+                display: block;
+                width: 30px;
+                position: fixed;
+                right: 32%;
+                bottom: 75px;
+                img{
+                    width: 100%;
+                    height: auto;
+                    transform: rotateZ(-25deg);
+                }
+            }
+        }
     }
     &__btn{
         &__group{

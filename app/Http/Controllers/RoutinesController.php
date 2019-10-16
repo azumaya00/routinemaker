@@ -18,6 +18,7 @@ class RoutinesController extends Controller
         $user = Auth::user();
         //自分のリストを取得
         $routines = Auth::user()->routines()->get();
+        Log::debug('現在のリスト: ' . $routines);
         //ビュー表示
         return view('routines.mypage', ['user' => $user, 'routines' => $routines]);
     }

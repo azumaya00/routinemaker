@@ -31,6 +31,10 @@
                 <h2 class="p-mypage__title">登録済みリスト</h2>
 
                 <!-- リストここから -->
+                @if(!isset($routines[0]))
+                    <p class="p-mypage__text--create">新しいリストを登録しよう！</p>
+                    <p class="p-mypage__text--arrow"><img src="/storage/arrow.png" alt=""></p>
+                    @endif
                 <ul class="p-mypage__list">
 
                     @foreach($routines as $routine)

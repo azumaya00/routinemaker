@@ -24,9 +24,19 @@
 </template>
 
 <script>
-
+//confetti読み込み
+import confetti from 'canvas-confetti';
     export default {
         name: "CompleteComponent",
+        created: function(){
+            confetti({
+                particleCount: 150,
+                spread: 80,
+                origin: {
+                    y: 0.6
+                }
+            })
+        }
 
     }
 </script>

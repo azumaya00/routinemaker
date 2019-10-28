@@ -27,6 +27,8 @@
         "vuedraggable": "^2.23.0"
     },
     "dependencies": {
+        "canvas-confetti": "^0.4.2",
+        "vue-confetti": "^2.0.5",
         "vuedraggable": "^2.23.0"
     }
 }
